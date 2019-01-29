@@ -1,0 +1,23 @@
+{
+    "Komachi:Relic:FerryingBoat": {
+        "NAME": "Ferrying Boat",
+        "FLAVOR": "Don't leave the dead behind.",
+        "DESCRIPTIONS": [
+            "At start of the combat bind a Spirit for each charge, then reset. NL Gain a charge after you kill a non-minion enemy."
+        ]
+    },
+    "Komachi:Relic:GhostlyCloak": {
+        "NAME": "Ghostly Cloak",
+        "FLAVOR": "Is this part of the uniform?",
+        "DESCRIPTIONS": [
+            "When you bind four Spirits in a turn, gain 1 Dexterity."
+        ]
+    },
+    "Komachi:Relic:OtherSidePier": {
+        "NAME": "Other Side's Pier",
+        "FLAVOR": "The journey always comes to an end.",
+        "DESCRIPTIONS": [
+          "Gain [E] and consume a Spirit at the start of your turn."
+        ]        
+    }
+}

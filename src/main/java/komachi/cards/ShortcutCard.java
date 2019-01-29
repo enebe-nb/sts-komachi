@@ -1,0 +1,49 @@
+package komachi.cards;
+
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import komachi.KomachiMod;
+import komachi.actions.ConsumeOrbAction;
+import komachi.patches.KomachiEnum;
+
+public class ShortcutCard extends AbstractCard {
+    public static final String ID = "Komachi:Shortcut";
+    public static final String NAME = "Shortcut";
+    public static final String DESCRIPTION = "Draw a card. NL Consume: Draw !M! cards instead.";
+    private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
+    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
+    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.NONE;
+    private static final int COST = 1;
+
+    public ShortcutCard() {
+        super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
+
+        this.magicNumber = this.baseMagicNumber = 3;
+    }
+
+    public void use(AbstractPlayer player, AbstractMonster target) {
+        if (AbstractDungeon.player.hasOrb()) {
+            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
+            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, this.magicNumber));
+        } else {
+            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, 1));
+        }
+    }
+
+    public void upgrade() {
+        if (!this.upgraded) {
+            upgradeName();
+            upgradeMagicNumber(1);
+        }
+    }
+
+    //static {
+        //cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+        //NAME = cardStrings.NAME;
+        //DESCRIPTION = cardStrings.DESCRIPTION;
+        //UPGRADED_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
+    //}
+}
