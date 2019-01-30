@@ -50,6 +50,7 @@ import komachi.cards.ShortcutCard;
 import komachi.cards.ShortenLifeCard;
 import komachi.cards.SinnerSpiritCard;
 import komachi.cards.SliceThroughCard;
+import komachi.cards.SpiritBladeCard;
 import komachi.cards.StrikeCard;
 import komachi.cards.TasteDeathCard;
 import komachi.cards.TrueMeditationCard;
@@ -152,6 +153,7 @@ public class KomachiMod implements EditCardsSubscriber, EditCharactersSubscriber
         BaseMod.addCard(new ShortenLifeCard());
         BaseMod.addCard(new SinnerSpiritCard());
         BaseMod.addCard(new SliceThroughCard());
+        BaseMod.addCard(new SpiritBladeCard());
         BaseMod.addCard(new TasteDeathCard());
         BaseMod.addCard(new TrueMeditationCard());
         BaseMod.addCard(new UnseenSpiritCard());

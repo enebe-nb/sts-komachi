@@ -16,7 +16,7 @@ public class SinnerSpiritCard extends AbstractCard {
     public static final String DESCRIPTION = "Bind a Spirit. NL Whenever you play a card this turn, deal !M! damage for each orb you have.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
-    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
+    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF_AND_ENEMY;
     private static final int COST = 2;
 
     public SinnerSpiritCard() {

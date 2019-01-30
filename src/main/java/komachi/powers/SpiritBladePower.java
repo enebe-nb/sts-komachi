@@ -24,7 +24,7 @@ public class SpiritBladePower extends AbstractPower {
         this.owner = owner;
         this.type = POWER_TYPE;
         this.amount = amount;
-        this.img = new Texture(KomachiMod.getResourcePath("powers/wandering-spirits.png"));
+        this.img = new Texture(KomachiMod.getResourcePath("powers/spirit-blade.png"));
         updateDescription();
     }
 
