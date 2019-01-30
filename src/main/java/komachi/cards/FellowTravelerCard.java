@@ -14,7 +14,7 @@ public class FellowTravelerCard extends AbstractCard {
     public static final String NAME = "Fellow Traveler";
     public static final String DESCRIPTION = "Whenever you play a Bound card, Gain !M! block.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.POWER;
-    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
+    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
     private static final int COST = 1;
 

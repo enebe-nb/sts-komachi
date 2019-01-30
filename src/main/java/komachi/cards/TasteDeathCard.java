@@ -16,7 +16,7 @@ import komachi.powers.CracklingSoulPower;
 public class TasteDeathCard extends AbstractCard {
     public static final String ID = "Komachi:TasteDeath";
     public static final String NAME = "Taste of Death";
-    public static final String DESCRIPTION = "Apply !M! Vulnerable and Weak to ALL enemies. NL Consume: Also apply !M! Crackling_Soul.";
+    public static final String DESCRIPTION = "Apply !M! Vulnerable and Weak to ALL enemies. NL Consume: Also apply !M! Crackling_Soul. NL Exhaust.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ALL_ENEMY;
@@ -26,6 +26,7 @@ public class TasteDeathCard extends AbstractCard {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.magicNumber = this.baseMagicNumber = 2;
+        this.exhaust = true;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {

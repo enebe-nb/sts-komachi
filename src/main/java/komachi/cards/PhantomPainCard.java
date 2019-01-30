@@ -41,7 +41,7 @@ public class PhantomPainCard extends AbstractCard {
         if (!this.upgraded) {
             upgradeName();
             upgradeDamage(3);
-            upgradeMagicNumber(2);
+            upgradeMagicNumber(1);
         }
     }
 

@@ -24,7 +24,7 @@ public class WideSwingCard extends AbstractCard {
     public WideSwingCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 9;
+        this.baseDamage = 8;
         this.baseAltDamage = 11;
         this.isMultiDamage = true;
     }
@@ -41,7 +41,7 @@ public class WideSwingCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(3);
+            upgradeDamage(2);
             upgradeAltDamage(5);
         }
     }

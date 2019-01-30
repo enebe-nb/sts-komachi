@@ -3,7 +3,7 @@
 
     <groupId>komachi</groupId>
     <artifactId>onozukakomachi</artifactId>
-    <version>v0.1.0</version>
+    <version>0.1.1</version>
     <packaging>jar</packaging>
 
     <name>Onozuka Komachi Mod</name>

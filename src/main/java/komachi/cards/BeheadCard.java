@@ -14,7 +14,7 @@ public class BeheadCard extends AbstractCard {
     public static final String ID = "Komachi:Behead";
     public static final String NAME = "Behead";
     public static final String DESCRIPTION = "Deal !D! damage. NL Receive !M! additional damage for each consumed spirit in this combat.";
-    public static final String EX_DESCRIPTION = " NL !ALTDMG! damage";
+    public static final String EX_DESCRIPTION = " NL (total !ALTDMG! damage)";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
@@ -24,7 +24,7 @@ public class BeheadCard extends AbstractCard {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.baseAltDamage = this.baseDamage = 6;
-        this.magicNumber = this.baseMagicNumber = 1;
+        this.magicNumber = this.baseMagicNumber = 2;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {

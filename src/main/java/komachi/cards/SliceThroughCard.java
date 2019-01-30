@@ -40,7 +40,7 @@ public class SliceThroughCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(2);
+            upgradeDamage(3);
         }
     }
 

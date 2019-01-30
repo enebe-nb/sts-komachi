@@ -37,7 +37,7 @@ public class YesterdayMoneyCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(1);
+            upgradeMagicNumber(1);
         }
     }
 

@@ -24,7 +24,7 @@ public class AwaitedRestCard extends AbstractCard {
     public AwaitedRestCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = 4;
+        this.magicNumber = this.baseMagicNumber = 5;
     }
 
     public boolean canUse(AbstractPlayer player, AbstractMonster target) {
@@ -46,7 +46,7 @@ public class AwaitedRestCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(2);
+            upgradeMagicNumber(3);
         }
     }
 
