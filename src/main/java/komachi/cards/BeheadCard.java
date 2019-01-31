@@ -36,7 +36,7 @@ public class BeheadCard extends AbstractCard {
         if (!this.upgraded) {
             upgradeName();
             upgradeDamage(3);
-            upgradeAltDamage(2);
+            upgradeAltDamage(3);
             upgradeMagicNumber(1);
         }
     }

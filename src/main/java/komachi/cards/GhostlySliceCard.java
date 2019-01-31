@@ -19,7 +19,7 @@ public class GhostlySliceCard extends AbstractCard {
     public static final String NAME = "Ghostly Slice";
     public static final String DESCRIPTION = "Deal !D! damage to a random enemy. NL Consume: Play again. NL Ethereal";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
-    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
+    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.RARE;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ALL_ENEMY;
     private static final int COST = 2;
 

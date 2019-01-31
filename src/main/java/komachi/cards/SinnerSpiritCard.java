@@ -30,7 +30,7 @@ public class SinnerSpiritCard extends AbstractCard {
         int orbs = player.filledOrbCount();
         if (player.orbs.size() > orbs) ++orbs;
         AbstractDungeon.actionManager.addToBottom(new BoundSpiritAction());
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new KarmaPower(target, player, this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new KarmaPower(target, player, this.magicNumber * orbs), this.magicNumber * orbs));
     }
 
     public void upgrade() {
