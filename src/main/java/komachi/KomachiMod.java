@@ -54,6 +54,7 @@ import komachi.cards.ReaperScytheCard;
 import komachi.cards.RepentantSoulCard;
 import komachi.cards.ShortcutCard;
 import komachi.cards.ShortenLifeCard;
+import komachi.cards.SinRecollectionCard;
 import komachi.cards.SinnerSpiritCard;
 import komachi.cards.SliceThroughCard;
 import komachi.cards.SpiritBladeCard;
@@ -165,6 +166,7 @@ public class KomachiMod implements EditCardsSubscriber, EditCharactersSubscriber
         BaseMod.addCard(new ShortcutCard());
         BaseMod.addCard(new ShortenLifeCard());
         BaseMod.addCard(new SinnerSpiritCard());
+        BaseMod.addCard(new SinRecollectionCard());
         BaseMod.addCard(new SliceThroughCard());
         BaseMod.addCard(new SpiritBladeCard());
         BaseMod.addCard(new TasteDeathCard());
@@ -186,6 +188,7 @@ public class KomachiMod implements EditCardsSubscriber, EditCharactersSubscriber
         BaseMod.addKeyword("Consume", new String[]{"consume"}, "Remove a spirit to apply the card effect.");
         BaseMod.addKeyword("Crackling Soul", new String[]{"crackling soul", "crackling_soul"}, "At next turn the enemy loses HP for each debuff.");
         BaseMod.addKeyword("Rest", new String[]{"rest"}, "At end of combat heals, reduce the value each turn.");
+        BaseMod.addKeyword("Karma", new String[]{"karma"}, "When applying karma, deal the accumulated value as damage. NL Each turn reduce the value by half rounded up.");
     }
 
     public void receiveEditStrings() {

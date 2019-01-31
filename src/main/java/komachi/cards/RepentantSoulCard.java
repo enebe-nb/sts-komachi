@@ -8,15 +8,15 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import komachi.KomachiMod;
 import komachi.patches.KomachiEnum;
+import komachi.powers.KarmaPower;
 
 public class RepentantSoulCard extends AbstractCard {
     public static final String ID = "Komachi:RepentantSoul";
     public static final String NAME = "Repentant Soul";
-    public static final String DESCRIPTION = "Deal !D! damage. NL If this card kills an enemy with negative Strength, permanently increase this card's damage by that much. NL Exhaust.";
+    public static final String DESCRIPTION = "Deal !D! damage. NL If this card kills an enemy with karma, permanently increase this card's damage by that much. NL Exhaust.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.RARE;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
@@ -30,9 +30,9 @@ public class RepentantSoulCard extends AbstractCard {
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        AbstractPower power = target.getPower(StrengthPower.POWER_ID);
-        if (power != null && power.amount < 0) {
-            AbstractDungeon.actionManager.addToBottom(new RitualDaggerAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), -power.amount, this.uuid));
+        AbstractPower power = target.getPower(KarmaPower.POWER_ID);
+        if (power != null && power.amount > 0) {
+            AbstractDungeon.actionManager.addToBottom(new RitualDaggerAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), power.amount, this.uuid));
         } else {
             AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }

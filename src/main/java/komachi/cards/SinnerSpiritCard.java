@@ -13,7 +13,7 @@ import komachi.powers.KarmaPower;
 public class SinnerSpiritCard extends AbstractCard {
     public static final String ID = "Komachi:SinnerSpirit";
     public static final String NAME = "Bound Sinner Spirit";
-    public static final String DESCRIPTION = "Bind a Spirit. NL Whenever you play a card this turn, deal !M! damage for each orb you have.";
+    public static final String DESCRIPTION = "Bind a Spirit. NL Apply !M! karma for each orb you have.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF_AND_ENEMY;

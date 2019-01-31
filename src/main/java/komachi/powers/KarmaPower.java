@@ -2,10 +2,9 @@ package komachi.powers;
 
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -20,7 +19,7 @@ public class KarmaPower extends AbstractPower {
     private AbstractCreature source;
 
     public static String[] DESCRIPTIONS = new String[]{
-        "When you play a card deal ", "damage."
+        "When applying karma, deal the accumulated value as damage. NL Each turn reduce the value by half rounded up."
     };
 
     public KarmaPower(AbstractCreature owner, AbstractCreature source, int amount) {
@@ -35,15 +34,24 @@ public class KarmaPower extends AbstractPower {
     }
 
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        this.description = DESCRIPTIONS[0];
     }
 
     public void atStartOfTurn() {
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
+        int value = MathUtils.ceil(this.amount / 2.0F);
+        AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(this.owner, this.owner, this, value));
+    }
+
+    public void onInitialApplication() {
+        this.onSpecificTrigger();
+    }
+
+    public void stackPower(int amount) {
+        super.stackPower(amount);
+        this.onSpecificTrigger();
     }
   
-    public void onUseCard(AbstractCard card, UseCardAction action) {
-        flash();
+    public void onSpecificTrigger() {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(this.owner, new DamageInfo(this.source, this.amount, DamageInfo.DamageType.THORNS)));
     }
 }

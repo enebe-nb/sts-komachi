@@ -16,17 +16,17 @@ import komachi.powers.KarmaPower;
 public class EndlessWayCard extends AbstractCard {
     public static final String ID = "Komachi:EndlessWay";
     public static final String NAME = "The Endless Way";
-    public static final String DESCRIPTION = "Deal !D! damage. NL Consume: Whenever you play a card this turn, deal !M! damage.";
+    public static final String DESCRIPTION = "Deal !D! damage. NL Consume: Apply !M! karma.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
-    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
+    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
     private static final int COST = 1;
 
     public EndlessWayCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 8;
-        this.magicNumber = this.baseMagicNumber = 4;
+        this.baseDamage = 5;
+        this.magicNumber = this.baseMagicNumber = 3;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
@@ -40,7 +40,7 @@ public class EndlessWayCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(4);
+            upgradeDamage(2);
             upgradeMagicNumber(2);
         }
     }
