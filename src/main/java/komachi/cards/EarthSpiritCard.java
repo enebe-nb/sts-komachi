@@ -14,14 +14,14 @@ public class EarthSpiritCard extends AbstractCard {
     public static final String NAME = "Bound Earth Spirit";
     public static final String DESCRIPTION = "Bind a Spirit. NL Gain !B! block for each bounded Spirit.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
-    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
+    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
     private static final int COST = 2;
 
     public EarthSpiritCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseBlock = 5;
+        this.baseBlock = 4;
         this.tags.add(KomachiEnum.TAG_BOUND);
     }
 

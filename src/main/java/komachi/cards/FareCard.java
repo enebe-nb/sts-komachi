@@ -20,7 +20,7 @@ public class FareCard extends AbstractCard {
 
     public FareCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
-        this.magicNumber = this.baseMagicNumber = 5;
+        this.magicNumber = this.baseMagicNumber = 4;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
@@ -36,7 +36,7 @@ public class FareCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeBaseCost(1);
+            upgradeMagicNumber(2);
         }
     }
 

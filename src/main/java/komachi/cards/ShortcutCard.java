@@ -14,7 +14,7 @@ public class ShortcutCard extends AbstractCard {
     public static final String NAME = "Shortcut";
     public static final String DESCRIPTION = "Draw a card. NL Consume: Draw !M! cards instead.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
-    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
+    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.NONE;
     private static final int COST = 1;
 
@@ -36,7 +36,7 @@ public class ShortcutCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(1);
+            upgradeMagicNumber(2);
         }
     }
 

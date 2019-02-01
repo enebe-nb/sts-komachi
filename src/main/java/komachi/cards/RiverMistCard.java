@@ -1,40 +1,41 @@
 package komachi.cards;
 
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import komachi.KomachiMod;
+import komachi.actions.ApplyRandomDebuffAction;
 import komachi.patches.KomachiEnum;
 
-public class TiringJourneyCard extends AbstractCard {
-    public static final String ID = "Komachi:TiringJourney";
-    public static final String NAME = "Tiring Journey";
-    public static final String DESCRIPTION = "Enemies lose !M! Strength. Exhaust.";
+public class RiverMistCard extends AbstractCard {
+    public static final String ID = "Komachi:RiverMist";
+    public static final String NAME = "River's Mist";
+    public static final String DESCRIPTION = "Gain !B! block. Apply to ALL enemies a random debuff with !M! power.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
-    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.RARE;
-    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ALL_ENEMY;
-    private static final int COST = 0;
+    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
+    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ALL;
+    private static final int COST = 2;
 
-    public TiringJourneyCard() {
+    public RiverMistCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
-
+        
+        this.baseBlock = 12;
         this.magicNumber = this.baseMagicNumber = 1;
-        this.exhaust = true;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        for (AbstractCreature monster : AbstractDungeon.getMonsters().monsters) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new StrengthPower(monster, -this.magicNumber), -this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+            AbstractDungeon.actionManager.addToBottom(new ApplyRandomDebuffAction(monster, player, this.magicNumber));
         }
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
+            upgradeBlock(6);
             upgradeMagicNumber(1);
         }
     }

@@ -3,6 +3,7 @@ package komachi;
 import java.nio.charset.StandardCharsets;
 
 import com.badlogic.gdx.Gdx;
+import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
@@ -17,17 +18,19 @@ import komachi.cards.AwaitedRestCard;
 import komachi.cards.BeheadCard;
 import komachi.cards.BoatSanzuCard;
 import komachi.cards.BoundCard;
-import komachi.cards.CautiousStrikeCard;
 import komachi.cards.ChildSpiritCard;
 import komachi.cards.CollectTipCard;
 import komachi.cards.ConfinesAvichiCard;
+import komachi.cards.DeathVisionCard;
 import komachi.cards.DefendCard;
+import komachi.cards.DestroyHopeCard;
 import komachi.cards.DoubleCutCard;
 import komachi.cards.DrowningCard;
 import komachi.cards.EarthSpiritCard;
 import komachi.cards.EaseRestCard;
 import komachi.cards.EndlessWayCard;
 import komachi.cards.EtherealCutCard;
+import komachi.cards.EtherealSwipeCard;
 import komachi.cards.ExorcismCard;
 import komachi.cards.FaithCard;
 import komachi.cards.FareCard;
@@ -48,21 +51,21 @@ import komachi.cards.LonelySpiritCard;
 import komachi.cards.MementoCard;
 import komachi.cards.ModestyCard;
 import komachi.cards.OfferingsCard;
-import komachi.cards.PhantomPainCard;
 import komachi.cards.PowerSharingCard;
 import komachi.cards.ReaperScytheCard;
 import komachi.cards.RepentantSoulCard;
+import komachi.cards.RiverMistCard;
 import komachi.cards.ShortcutCard;
 import komachi.cards.ShortenLifeCard;
 import komachi.cards.SinRecollectionCard;
 import komachi.cards.SinnerSpiritCard;
-import komachi.cards.SliceThroughCard;
 import komachi.cards.SpiritBladeCard;
 import komachi.cards.StrikeCard;
 import komachi.cards.TasteDeathCard;
-import komachi.cards.TiringJourneyCard;
+import komachi.cards.ThrowAwayCard;
 import komachi.cards.TrueMeditationCard;
 import komachi.cards.UnseenSpiritCard;
+import komachi.cards.VengefulSpiritCard;
 import komachi.cards.WanderingSpiritsCard;
 import komachi.cards.WideSwingCard;
 import komachi.cards.YesterdayMoneyCard;
@@ -73,7 +76,7 @@ import komachi.relics.FerryingBoatRelic;
 import komachi.relics.GhostlyCloakRelic;
 import komachi.relics.OtherSidePierRelic;
 
-@com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
+@SpireInitializer
 public class KomachiMod implements EditCardsSubscriber, EditCharactersSubscriber, EditKeywordsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, OnStartBattleSubscriber {
     private static final String ASSETS_FOLDER = "komachiassets/";
 
@@ -129,16 +132,18 @@ public class KomachiMod implements EditCardsSubscriber, EditCharactersSubscriber
         BaseMod.addCard(new AwaitedRestCard());
         BaseMod.addCard(new BeheadCard());
         BaseMod.addCard(new BoatSanzuCard());
-        BaseMod.addCard(new CautiousStrikeCard());
         BaseMod.addCard(new ChildSpiritCard());
         BaseMod.addCard(new CollectTipCard());
         BaseMod.addCard(new ConfinesAvichiCard());
+        BaseMod.addCard(new DeathVisionCard());
+        BaseMod.addCard(new DestroyHopeCard());
         BaseMod.addCard(new DoubleCutCard());
         BaseMod.addCard(new DrowningCard());
         BaseMod.addCard(new EarthSpiritCard());
         BaseMod.addCard(new EaseRestCard());
         BaseMod.addCard(new EndlessWayCard());
         BaseMod.addCard(new EtherealCutCard());
+        BaseMod.addCard(new EtherealSwipeCard());
         BaseMod.addCard(new ExorcismCard());
         BaseMod.addCard(new FaithCard());
         BaseMod.addCard(new FareCard());
@@ -159,20 +164,20 @@ public class KomachiMod implements EditCardsSubscriber, EditCharactersSubscriber
         BaseMod.addCard(new MementoCard());
         BaseMod.addCard(new ModestyCard());
         BaseMod.addCard(new OfferingsCard());
-        BaseMod.addCard(new PhantomPainCard());
         BaseMod.addCard(new PowerSharingCard());
         BaseMod.addCard(new ReaperScytheCard());
         BaseMod.addCard(new RepentantSoulCard());
+        BaseMod.addCard(new RiverMistCard());
         BaseMod.addCard(new ShortcutCard());
         BaseMod.addCard(new ShortenLifeCard());
         BaseMod.addCard(new SinnerSpiritCard());
         BaseMod.addCard(new SinRecollectionCard());
-        BaseMod.addCard(new SliceThroughCard());
         BaseMod.addCard(new SpiritBladeCard());
         BaseMod.addCard(new TasteDeathCard());
-        BaseMod.addCard(new TiringJourneyCard());
+        BaseMod.addCard(new ThrowAwayCard());
         BaseMod.addCard(new TrueMeditationCard());
         BaseMod.addCard(new UnseenSpiritCard());
+        BaseMod.addCard(new VengefulSpiritCard());
         BaseMod.addCard(new WanderingSpiritsCard());
         BaseMod.addCard(new YesterdayMoneyCard());
     }

@@ -7,7 +7,6 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
 import komachi.KomachiMod;
@@ -16,24 +15,24 @@ import komachi.patches.KomachiEnum;
 
 public class GhostlyChainCard extends AbstractCard {
     public static final String ID = "Komachi:GhostlyChain";
-    public static final String NAME = "Ghostly Chain";
-    public static final String DESCRIPTION = "Enemy loses !M! Strength this turn. NL Consume: Play again. NL Ethereal";
-    private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
+    public static final String NAME = "Ghostly Chains";
+    public static final String DESCRIPTION = "ALL enemies loses !M! Strength. NL Consume: Play again. NL Ethereal";
+    public static final String UPGRADE_DESCRIPTION = "ALL enemies loses !M! Strength. NL Consume: Play again. NL Ethereal, Innate.";
+    private static final AbstractCard.CardType TYPE = AbstractCard.CardType.POWER;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
-    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
+    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ALL_ENEMY;
     private static final int COST = 0;
 
     public GhostlyChainCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = 3;
+        this.magicNumber = this.baseMagicNumber = 1;
         this.isEthereal = true;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new StrengthPower(target, -this.magicNumber), -this.magicNumber));
-        if (!target.hasPower("Artifact")) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new GainStrengthPower(target, this.magicNumber), this.magicNumber));
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new StrengthPower(monster, -this.magicNumber), -this.magicNumber));
         } if (AbstractDungeon.player.hasOrb()) {
             AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
 
@@ -56,7 +55,9 @@ public class GhostlyChainCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(1);
+            this.isInnate = true;
+            this.rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 

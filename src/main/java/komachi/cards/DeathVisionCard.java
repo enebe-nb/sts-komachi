@@ -1,10 +1,6 @@
 package komachi.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -12,35 +8,37 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import komachi.KomachiMod;
 import komachi.actions.ConsumeOrbAction;
 import komachi.patches.KomachiEnum;
+import komachi.powers.CracklingSoulPower;
+import komachi.powers.ScaredPower;
 
-public class SliceThroughCard extends AbstractCard {
-    public static final String ID = "Komachi:SliceThroughCard";
-    public static final String NAME = "Slice Through";
-    public static final String DESCRIPTION = "Deal !D! damage. NL Consume: Gain [E] and draw a card.";
-    private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
+public class DeathVisionCard extends AbstractCard {
+    public static final String ID = "Komachi:DeathVision";
+    public static final String NAME = "Death's Vision";
+    public static final String DESCRIPTION = "Apply !M! Crackling Soul. NL Consume: Enemy becomes scared. NL Exhaust.";
+    private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
     private static final int COST = 1;
 
-    public SliceThroughCard() {
+    public DeathVisionCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 5;
+        this.magicNumber = this.baseMagicNumber = 5;
+        this.exhaust = true;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new CracklingSoulPower(target, player, this.magicNumber), this.magicNumber));
         if (AbstractDungeon.player.hasOrb()) {
             AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
-            AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, 1));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new ScaredPower(target)));
         }
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(3);
+            upgradeMagicNumber(3);
         }
     }
 

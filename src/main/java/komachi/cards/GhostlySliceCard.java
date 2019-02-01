@@ -26,7 +26,7 @@ public class GhostlySliceCard extends AbstractCard {
     public GhostlySliceCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 8;
+        this.baseDamage = 9;
         this.isEthereal = true;
     }
 
@@ -57,7 +57,7 @@ public class GhostlySliceCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(3);
+            upgradeDamage(4);
         }
     }
 

@@ -32,6 +32,6 @@ public class FarePower extends AbstractPower {
     }
 
     public void onDeath() {
-        AbstractDungeon.getCurrRoom().addStolenGoldToRewards(this.amount);
+        AbstractDungeon.getCurrRoom().addGoldToRewards(this.amount);
     }
 }

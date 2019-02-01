@@ -19,20 +19,26 @@ public class CracklingSoulPower extends AbstractPower {
     public static PowerType POWER_TYPE = PowerType.DEBUFF;
     public AbstractCreature source;
     public boolean isDone = false;
+    public boolean fromDestroyHope;
 
     public static String[] DESCRIPTIONS = new String[] {
         "At start of its next turn it loses ", " HP for each debuff."
     }; 
 
-    public CracklingSoulPower(AbstractCreature owner, AbstractCreature source, int amount) {
+    public CracklingSoulPower(AbstractCreature owner, AbstractCreature source, int amount, boolean fromDestroyHope) {
         this.ID = POWER_ID;
         this.name = NAME;
         this.owner = owner;
         this.source = source;
         this.type = POWER_TYPE;
         this.amount = amount;
+        this.fromDestroyHope = fromDestroyHope;
         this.img = new Texture(KomachiMod.getResourcePath("powers/crackling-soul.png"));
         updateDescription();
+    }
+
+    public CracklingSoulPower(AbstractCreature owner, AbstractCreature source, int amount) {
+        this(owner, source, amount, false);
     }
 
     public void updateDescription() {

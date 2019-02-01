@@ -12,30 +12,32 @@ import komachi.KomachiMod;
 import komachi.patches.KomachiEnum;
 import komachi.powers.CracklingSoulPower;
 
-public class EtherealCutCard extends AbstractCard {
-    public static final String ID = "Komachi:EtherealCut";
-    public static final String NAME = "Ethereal Cut";
-    public static final String DESCRIPTION = "Enemy loses !M! HP. NL Apply 1 Crackling_Soul";
+public class EtherealSwipeCard extends AbstractCard {
+    public static final String ID = "Komachi:EtherealSwipe";
+    public static final String NAME = "Ethereal Swipe";
+    public static final String DESCRIPTION = "ALL enemies loses !M! HP. NL Apply 2 Crackling_Soul to ALL enemies.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
-    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
-    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
-    private static final int COST = 1;
+    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
+    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ALL_ENEMY;
+    private static final int COST = 3;
 
-    public EtherealCutCard() {
+    public EtherealSwipeCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = 9;
+        this.magicNumber = this.baseMagicNumber = 18;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.magicNumber, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.SLASH_HEAVY));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new CracklingSoulPower(target, player, 1), 1));
+        for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.magicNumber, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.SLASH_HEAVY));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new CracklingSoulPower(monster, player, 2), 2));
+        }
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(5);
+            upgradeMagicNumber(10);
         }
     }
 

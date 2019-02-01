@@ -1,5 +1,6 @@
 package komachi.cards;
 
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.ExhaustAllEtherealAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -12,8 +13,8 @@ import komachi.patches.KomachiEnum;
 public class HumanSpiritCard extends AbstractCard {
     public static final String ID = "Komachi:HumanSpirit";
     public static final String NAME = "Human Spirit Passing By";
-    public static final String DESCRIPTION = "Unplayable. NL When you draw this card bound a Spirit. NL Ethereal.";
-    public static final String UPGRADE_DESCRIPTION = "Unplayable. NL When you draw this card bound a Spirit.";
+    public static final String DESCRIPTION = "Unplayable. NL When you draw this card bound a Spirit and gain !B! block. NL Ethereal.";
+    public static final String UPGRADE_DESCRIPTION = "Unplayable. NL When you draw this card bound a Spirit and gain !B! block.";
     public static final String CANTUSE_DESCRIPTION = "I can't play this card.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
@@ -22,6 +23,8 @@ public class HumanSpiritCard extends AbstractCard {
 
     public HumanSpiritCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
+
+        this.baseBlock = 3;
         this.isEthereal = true;
     }
 
@@ -34,6 +37,7 @@ public class HumanSpiritCard extends AbstractCard {
 
     public void triggerWhenDrawn() {
         AbstractDungeon.actionManager.addToBottom(new BoundSpiritAction());
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, this.block));
     }
 
     public void triggerOnEndOfPlayerTurn() {
@@ -43,6 +47,7 @@ public class HumanSpiritCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
+            upgradeBlock(2);
             this.isEthereal = false;
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();

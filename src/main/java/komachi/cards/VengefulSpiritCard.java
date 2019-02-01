@@ -2,42 +2,40 @@ package komachi.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import komachi.KomachiMod;
+import komachi.actions.BoundSpiritAction;
 import komachi.patches.KomachiEnum;
 
-public class CautiousStrikeCard extends AbstractCard {
-    public static final String ID = "Komachi:CautiousStrike";
-    public static final String NAME = "Cautious Strike";
-    public static final String DESCRIPTION = "Deal !D! damage. NL Gain !B! block.";
+public class VengefulSpiritCard extends AbstractCard {
+    public static final String ID = "Komachi:VengefulSpirit";
+    public static final String NAME = "Bound Vengeful Spirit";
+    public static final String DESCRIPTION = "Bind a Spirit. NL Deal !D! damage.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
     private static final int COST = 1;
 
-    public CautiousStrikeCard() {
+    public VengefulSpiritCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 5;
-        this.baseBlock = 5;
-        this.tags.add(AbstractCard.CardTags.STRIKE);
+        this.baseDamage = 6;
+        this.tags.add(KomachiEnum.TAG_BOUND);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
+        AbstractDungeon.actionManager.addToBottom(new BoundSpiritAction());
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(2);
-            upgradeBlock(2);
+            upgradeDamage(3);
         }
     }
 
