@@ -24,7 +24,7 @@ public class FinalJudgmentCard extends AbstractCard {
     private static final int COST = 3;
 
     public FinalJudgmentCard() {
-        super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
+        super(ID, NAME, KomachiMod.getResourcePath("cards/finaljudgement.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.baseDamage = 22;
         this.baseAltDamage = 33;

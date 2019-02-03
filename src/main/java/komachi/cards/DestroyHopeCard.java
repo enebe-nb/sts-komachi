@@ -19,7 +19,7 @@ public class DestroyHopeCard extends AbstractCard {
     public static final String DESCRIPTION = "Deal !D! damage. NL Consume: This turn, if you apply a debuff also apply !M! Crackling_Soul.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
-    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
+    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF_AND_ENEMY;
     private static final int COST = 1;
 
     public DestroyHopeCard() {

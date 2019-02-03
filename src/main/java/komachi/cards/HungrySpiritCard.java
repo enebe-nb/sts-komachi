@@ -17,13 +17,13 @@ public class HungrySpiritCard extends AbstractCard {
     public static final String DESCRIPTION = "Bind a Spirit. NL Deal !D! damage for each bounded Spirit.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
-    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
-    private static final int COST = 2;
+    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF_AND_ENEMY;
+    private static final int COST = 1;
 
     public HungrySpiritCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 5;
+        this.baseDamage = 4;
         this.tags.add(KomachiEnum.TAG_BOUND);
     }
 
@@ -39,7 +39,7 @@ public class HungrySpiritCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeBaseCost(1);
+            upgradeDamage(2);
         }
     }
 

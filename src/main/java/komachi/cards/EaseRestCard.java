@@ -22,7 +22,7 @@ public class EaseRestCard extends AbstractCard {
     public EaseRestCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseBlock = 5;
+        this.baseBlock = 7;
         this.magicNumber = this.baseMagicNumber = 1;
     }
 

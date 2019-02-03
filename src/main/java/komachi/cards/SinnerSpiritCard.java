@@ -17,7 +17,7 @@ public class SinnerSpiritCard extends AbstractCard {
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF_AND_ENEMY;
-    private static final int COST = 2;
+    private static final int COST = 1;
 
     public SinnerSpiritCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
@@ -36,7 +36,7 @@ public class SinnerSpiritCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeBaseCost(1);
+            upgradeMagicNumber(1);
         }
     }
 

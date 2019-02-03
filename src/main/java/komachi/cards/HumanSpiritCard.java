@@ -1,7 +1,6 @@
 package komachi.cards;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.utility.ExhaustAllEtherealAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -28,20 +27,13 @@ public class HumanSpiritCard extends AbstractCard {
         this.isEthereal = true;
     }
 
-    public boolean canUse(AbstractPlayer player, AbstractMonster target) {
-        this.cantUseMessage = CANTUSE_DESCRIPTION;
-        return false;
-    }
-
+    public boolean cardPlayable(AbstractMonster target) { return false; }
     public void use(AbstractPlayer player, AbstractMonster target) { }
 
     public void triggerWhenDrawn() {
+        this.applyPowers();
         AbstractDungeon.actionManager.addToBottom(new BoundSpiritAction());
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, this.block));
-    }
-
-    public void triggerOnEndOfPlayerTurn() {
-      AbstractDungeon.actionManager.addToTop(new ExhaustAllEtherealAction());
     }
 
     public void upgrade() {

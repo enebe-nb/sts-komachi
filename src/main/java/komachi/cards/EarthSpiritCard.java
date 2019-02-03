@@ -16,7 +16,7 @@ public class EarthSpiritCard extends AbstractCard {
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
-    private static final int COST = 2;
+    private static final int COST = 1;
 
     public EarthSpiritCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
@@ -35,7 +35,7 @@ public class EarthSpiritCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeBaseCost(1);
+            upgradeBlock(2);
         }
     }
 

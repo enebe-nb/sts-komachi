@@ -17,7 +17,7 @@ public class VengefulSpiritCard extends AbstractCard {
     public static final String DESCRIPTION = "Bind a Spirit. NL Deal !D! damage.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
-    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
+    private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF_AND_ENEMY;
     private static final int COST = 1;
 
     public VengefulSpiritCard() {

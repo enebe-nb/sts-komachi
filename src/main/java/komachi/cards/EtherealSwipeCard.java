@@ -19,12 +19,12 @@ public class EtherealSwipeCard extends AbstractCard {
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ALL_ENEMY;
-    private static final int COST = 3;
+    private static final int COST = 2;
 
     public EtherealSwipeCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = 18;
+        this.magicNumber = this.baseMagicNumber = 13;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
@@ -37,7 +37,7 @@ public class EtherealSwipeCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(10);
+            upgradeMagicNumber(7);
         }
     }
 

@@ -15,7 +15,7 @@ import komachi.powers.CracklingSoulPower;
 public class EtherealCutCard extends AbstractCard {
     public static final String ID = "Komachi:EtherealCut";
     public static final String NAME = "Ethereal Cut";
-    public static final String DESCRIPTION = "Enemy loses !M! HP. NL Apply 1 Crackling_Soul";
+    public static final String DESCRIPTION = "Enemy loses !M! HP. NL Apply 2 Crackling_Soul";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
@@ -24,12 +24,12 @@ public class EtherealCutCard extends AbstractCard {
     public EtherealCutCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = 9;
+        this.magicNumber = this.baseMagicNumber = 8;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.magicNumber, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.SLASH_HEAVY));
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new CracklingSoulPower(target, player, 1), 1));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new CracklingSoulPower(target, player, 2), 2));
     }
 
     public void upgrade() {

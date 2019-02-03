@@ -21,7 +21,7 @@ public class UnseenSpiritCard extends AbstractCard {
     public UnseenSpiritCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseBlock = 6;
+        this.baseBlock = 7;
         this.tags.add(KomachiEnum.TAG_BOUND);
     }
 
@@ -33,7 +33,7 @@ public class UnseenSpiritCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeBlock(3);
+            upgradeBlock(4);
         }
     }
 

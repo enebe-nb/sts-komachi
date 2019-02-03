@@ -1,7 +1,6 @@
 package komachi.cards;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.utility.ExhaustAllEtherealAction;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
@@ -45,10 +44,6 @@ public class GhostlyBarrierCard extends AbstractCard {
         }
     }
 
-    public void triggerOnEndOfPlayerTurn() {
-        AbstractDungeon.actionManager.addToTop(new ExhaustAllEtherealAction());
-    }
-  
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
