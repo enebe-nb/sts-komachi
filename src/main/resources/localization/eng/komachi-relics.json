@@ -10,7 +10,7 @@
         "NAME": "Ghostly Cloak",
         "FLAVOR": "Is this part of the uniform?",
         "DESCRIPTIONS": [
-            "When you bind four Spirits in a turn, gain 1 Dexterity."
+            "When you bind three Spirits in a turn, gain 1 Dexterity."
         ]
     },
     "Komachi:Relic:OtherSidePier": {

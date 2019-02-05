@@ -27,7 +27,7 @@ public class GhostlyCloakRelic extends CustomRelic {
 
     @Override
     public void onTrigger() {
-        if (++this.counter >= 4) {
+        if (++this.counter >= 3) {
             this.flash();
             this.counter = 0;
             AbstractPlayer player = AbstractDungeon.player;
@@ -36,7 +36,7 @@ public class GhostlyCloakRelic extends CustomRelic {
     }
 
     @Override
-    public void atBattleStart() {
+    public void atTurnStart() {
         this.counter = 0;
     }
 }

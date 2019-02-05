@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbActivateEffect;
 import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbPassiveEffect;
 
 import komachi.KomachiMod;
@@ -62,6 +63,11 @@ public class SpiritOrb extends AbstractOrb {
     @Override
     public AbstractOrb makeCopy() {
         return new SpiritOrb();
+    }
+
+    @Override
+    public void triggerEvokeAnimation() {
+        AbstractDungeon.effectsQueue.add(new PlasmaOrbActivateEffect(this.cX, this.cY));
     }
 
     @Override

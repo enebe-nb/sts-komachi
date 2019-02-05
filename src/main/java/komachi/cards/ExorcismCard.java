@@ -18,7 +18,7 @@ import komachi.patches.KomachiEnum;
 public class ExorcismCard extends AbstractCard {
     public static final String ID = "Komachi:Exorcism";
     public static final String NAME = "Exorcism";
-    public static final String DESCRIPTION = "Deal !D! damage to ALL enemies. NL Consume: Remove a debuff from you.";
+    public static final String DESCRIPTION = "Deal !D! damage to ALL enemies. NL Consume: Remove a random debuff from you.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ALL_ENEMY;
@@ -41,7 +41,7 @@ public class ExorcismCard extends AbstractCard {
             } if (powers.size() > 0) {
                 AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(player, player, powers.get(MathUtils.random(0, powers.size() - 1))));
             }
-    }
+        }
     }
 
     public void upgrade() {
@@ -58,5 +58,3 @@ public class ExorcismCard extends AbstractCard {
         //UPGRADED_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
     //}
 }
-
-
