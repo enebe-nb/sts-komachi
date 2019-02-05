@@ -53,6 +53,7 @@ import komachi.cards.ModestyCard;
 import komachi.cards.OfferingsCard;
 import komachi.cards.PowerSharingCard;
 import komachi.cards.ReaperScytheCard;
+import komachi.cards.RemorseCard;
 import komachi.cards.RepentantSoulCard;
 import komachi.cards.RiverMistCard;
 import komachi.cards.ShortcutCard;
@@ -166,6 +167,7 @@ public class KomachiMod implements EditCardsSubscriber, EditCharactersSubscriber
         BaseMod.addCard(new OfferingsCard());
         BaseMod.addCard(new PowerSharingCard());
         BaseMod.addCard(new ReaperScytheCard());
+        BaseMod.addCard(new RemorseCard());
         BaseMod.addCard(new RepentantSoulCard());
         BaseMod.addCard(new RiverMistCard());
         BaseMod.addCard(new ShortcutCard());
