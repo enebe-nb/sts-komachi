@@ -12,7 +12,7 @@ import komachi.patches.KomachiEnum;
 public class RiverMistCard extends AbstractCard {
     public static final String ID = "Komachi:RiverMist";
     public static final String NAME = "River's Mist";
-    public static final String DESCRIPTION = "Gain !B! block. Apply to ALL enemies a random debuff with !M! power.";
+    public static final String DESCRIPTION = "Gain !B! block. Apply !M! random debuff to ALL enemies.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ALL;
@@ -28,7 +28,9 @@ public class RiverMistCard extends AbstractCard {
     public void use(AbstractPlayer player, AbstractMonster target) {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyRandomDebuffAction(monster, player, this.magicNumber));
+            for (int i = 0; i < this.magicNumber; ++i) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyRandomDebuffAction(monster, player, 1));
+            }
         }
     }
 

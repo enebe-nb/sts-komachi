@@ -15,9 +15,10 @@ public class DestroyHopePower extends AbstractPower {
     public static final String POWER_ID = "Komachi:Power:DestroyHope";
     public static final String NAME = "Destroy the Hope";
     public static PowerType POWER_TYPE = PowerType.DEBUFF;
+    private boolean justApplied = true;
 
     public static String[] DESCRIPTIONS = new String[] {
-        "This turn, if you apply a debuff also apply ", " Crackling_Soul."
+        "Until your next turn, if you apply a debuff also apply ", " Crackling_Soul."
     };
 
     public DestroyHopePower(AbstractCreature owner, int amount) {
@@ -46,6 +47,7 @@ public class DestroyHopePower extends AbstractPower {
     }
 
     public void atEndOfRound() {
-        AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
+        if (this.justApplied) this.justApplied = false;
+        else AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
     }
 }

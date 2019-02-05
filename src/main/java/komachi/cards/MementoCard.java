@@ -17,12 +17,12 @@ public class MementoCard extends AbstractCard {
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
-    private static final int COST = 1;
+    private static final int COST = 0;
 
     public MementoCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseBlock = 8;
+        this.baseBlock = 5;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {

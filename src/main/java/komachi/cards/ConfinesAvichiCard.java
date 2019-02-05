@@ -16,7 +16,7 @@ import komachi.powers.KarmaPower;
 public class ConfinesAvichiCard extends AbstractCard {
     public static final String ID = "Komachi:ConfinesAvichi";
     public static final String NAME = "Confines of Avichi";
-    public static final String DESCRIPTION = "Deal !D! damage to ALL enemies. NL Consume: Apply !M! karma.";
+    public static final String DESCRIPTION = "Deal !D! damage and apply !M! karma to ALL enemies. NL Consume: Deal !ALTDMG! damage instead.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ALL_ENEMY;
@@ -25,25 +25,29 @@ public class ConfinesAvichiCard extends AbstractCard {
     public ConfinesAvichiCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 13;
+        this.baseDamage = 9;
+        this.baseAltDamage = 13;
         this.magicNumber = this.baseMagicNumber = 2;
         this.isMultiDamage = true;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        if (AbstractDungeon.player.hasOrb()) {
+        if (!AbstractDungeon.player.hasOrb()) {
+            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        } else {
             AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
-            for (AbstractCreature monster : AbstractDungeon.getMonsters().monsters) {
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new KarmaPower(monster, player, this.magicNumber), this.magicNumber));
-            }
+            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, this.multiAltDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        }
+        for (AbstractCreature monster : AbstractDungeon.getMonsters().monsters) {
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new KarmaPower(monster, player, this.magicNumber), this.magicNumber));
         }
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(5);
+            upgradeDamage(4);
+            upgradeAltDamage(6);
             upgradeMagicNumber(1);
         }
     }

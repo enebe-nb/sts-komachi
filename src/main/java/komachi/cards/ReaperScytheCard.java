@@ -16,7 +16,7 @@ import komachi.powers.CracklingSoulPower;
 public class ReaperScytheCard extends AbstractCard {
     public static final String ID = "Komachi:ReaperScythe";
     public static final String NAME = "Reaper's Scythe";
-    public static final String DESCRIPTION = "Deal !D! damage. NL Consume: Apply !M! Crackling_Soul.";
+    public static final String DESCRIPTION = "Deal !D! damage. NL Consume: Deal !ALTDMG! damage and apply !M! Crackling_Soul instead.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
@@ -25,14 +25,17 @@ public class ReaperScytheCard extends AbstractCard {
     public ReaperScytheCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 8;
+        this.baseDamage = 7;
+        this.baseAltDamage = 9;
         this.magicNumber = this.baseMagicNumber = 3;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        if (AbstractDungeon.player.hasOrb()) {
+        if (!AbstractDungeon.player.hasOrb()) {
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
+        } else {
             AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
+            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.altDamage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new CracklingSoulPower(target, player, this.magicNumber), this.magicNumber));
         }
     }
@@ -40,7 +43,8 @@ public class ReaperScytheCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(4);
+            upgradeDamage(3);
+            upgradeAltDamage(4);
             upgradeMagicNumber(1);
         }
     }

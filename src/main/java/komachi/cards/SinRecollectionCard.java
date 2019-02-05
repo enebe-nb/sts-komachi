@@ -12,7 +12,7 @@ import komachi.powers.SinRecollectionPower;
 public class SinRecollectionCard extends AbstractCard {
     public static final String ID = "Komachi:SinRecollection";
     public static final String NAME = "Sin Recollection";
-    public static final String DESCRIPTION = "This turn, if you deal unblocked damage, apply !M! karma.";
+    public static final String DESCRIPTION = "Until your next turn, if you would apply a random debuff, instead you apply that much karma.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
@@ -25,13 +25,13 @@ public class SinRecollectionCard extends AbstractCard {
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SinRecollectionPower(player, this.magicNumber), this.magicNumber));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SinRecollectionPower(player)));
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(1);
+            upgradeBaseCost(0);
         }
     }
 

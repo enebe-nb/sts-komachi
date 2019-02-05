@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 
 import komachi.powers.CracklingSoulPower;
 import komachi.powers.KarmaPower;
+import komachi.powers.SinRecollectionPower;
 
 public class ApplyRandomDebuffAction extends AbstractGameAction {
     public ApplyRandomDebuffAction(AbstractCreature target, AbstractCreature source, int amount) {
@@ -22,7 +23,7 @@ public class ApplyRandomDebuffAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        switch(MathUtils.random(4)) {
+        switch(this.source.hasPower(SinRecollectionPower.POWER_ID) ? 0 : MathUtils.random(4)) {
             case 0:
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.target, this.source, new KarmaPower(this.target, this.source, this.amount), this.amount));
                 break;
