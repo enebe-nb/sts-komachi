@@ -24,7 +24,7 @@ public class DoubleCutCard extends AbstractCard {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.baseDamage = 4;
-        this.baseAltDamage = 8;
+        this.baseAltDamage = 7;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
@@ -42,7 +42,7 @@ public class DoubleCutCard extends AbstractCard {
         if (!this.upgraded) {
             upgradeName();
             upgradeDamage(2);
-            upgradeAltDamage(4);
+            upgradeAltDamage(3);
         }
     }
 

@@ -12,8 +12,8 @@ import komachi.powers.HiganRetourPower;
 public class HiganRetourCard extends AbstractCard {
     public static final String ID = "Komachi:HiganRetour";
     public static final String NAME = "Higan Retour";
-    public static final String DESCRIPTION = "When you bind a spirit, gain !M! Strength for one turn.";
-    public static final String UPGRADE_DESCRIPTION = "When you bind a spirit, gain !M! Strength for one turn. NL Innate";
+    public static final String DESCRIPTION = "When you play a bound card, gain !M! Strength for one turn.";
+    public static final String UPGRADE_DESCRIPTION = "When you play a bound card, gain !M! Strength for one turn. NL Innate";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.POWER;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.RARE;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;

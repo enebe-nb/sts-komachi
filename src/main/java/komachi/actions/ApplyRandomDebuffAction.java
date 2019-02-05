@@ -23,7 +23,7 @@ public class ApplyRandomDebuffAction extends AbstractGameAction {
 
     @Override
     public void update() {
-        switch(this.source.hasPower(SinRecollectionPower.POWER_ID) ? 0 : MathUtils.random(4)) {
+        if (this.amount > 0) switch(this.source.hasPower(SinRecollectionPower.POWER_ID) ? 0 : MathUtils.random(4)) {
             case 0:
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.target, this.source, new KarmaPower(this.target, this.source, this.amount), this.amount));
                 break;

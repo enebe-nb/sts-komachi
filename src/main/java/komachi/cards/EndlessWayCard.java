@@ -9,14 +9,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import komachi.KomachiMod;
-import komachi.actions.ConsumeOrbAction;
 import komachi.patches.KomachiEnum;
 import komachi.powers.KarmaPower;
 
 public class EndlessWayCard extends AbstractCard {
     public static final String ID = "Komachi:EndlessWay";
     public static final String NAME = "The Endless Way";
-    public static final String DESCRIPTION = "Deal !D! damage and apply !M! karma. NL Consume: Deal !ALTDMG! damage instead.";
+    public static final String DESCRIPTION = "Deal !D! damage and apply !M! karma.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
@@ -26,17 +25,11 @@ public class EndlessWayCard extends AbstractCard {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.baseDamage = 5;
-        this.baseAltDamage = 9;
         this.magicNumber = this.baseMagicNumber = 2;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        if (!AbstractDungeon.player.hasOrb()) {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        } else {
-            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.altDamage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        }
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new KarmaPower(target, player, this.magicNumber), this.magicNumber));
     }
 
@@ -44,7 +37,6 @@ public class EndlessWayCard extends AbstractCard {
         if (!this.upgraded) {
             upgradeName();
             upgradeDamage(2);
-            upgradeAltDamage(4);
             upgradeMagicNumber(1);
         }
     }
