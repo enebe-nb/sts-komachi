@@ -28,9 +28,7 @@ public class FlowRiverCard extends AbstractCard {
 
     public void use(AbstractPlayer player, AbstractMonster target) {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
-        if (!AbstractDungeon.player.hand.isEmpty()) {
-            AbstractDungeon.actionManager.addToBottom(new DiscardToAction(1, new DrawCardAction(player, this.magicNumber)));
-        }
+        AbstractDungeon.actionManager.addToBottom(new DiscardToAction(1, new DrawCardAction(player, this.magicNumber)));
     }
 
     public void upgrade() {

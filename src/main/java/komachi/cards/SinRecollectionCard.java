@@ -14,7 +14,7 @@ public class SinRecollectionCard extends AbstractCard {
     public static final String NAME = "Sin Recollection";
     public static final String DESCRIPTION = "Until your next turn, if you would apply a random debuff, instead you apply that much karma.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
-    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
+    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.RARE;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
     private static final int COST = 1;
 

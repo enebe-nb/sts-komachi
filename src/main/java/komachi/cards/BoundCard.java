@@ -18,7 +18,7 @@ public class BoundCard extends AbstractCard {
     private static final int COST = 1;
 
     public BoundCard() {
-        super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
+        super(ID, NAME, KomachiMod.getResourcePath("cards/bound.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.tags.add(KomachiEnum.TAG_BOUND);
     }

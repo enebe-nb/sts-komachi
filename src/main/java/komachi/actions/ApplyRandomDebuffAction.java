@@ -19,6 +19,7 @@ public class ApplyRandomDebuffAction extends AbstractGameAction {
     public ApplyRandomDebuffAction(AbstractCreature target, AbstractCreature source, int amount) {
         setValues(target, source, amount);
         this.duration = Settings.ACTION_DUR_FAST;
+        this.actionType = ActionType.DEBUFF;
     }
 
     @Override

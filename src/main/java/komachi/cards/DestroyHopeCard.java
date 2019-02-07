@@ -14,7 +14,7 @@ public class DestroyHopeCard extends AbstractCard {
     public static final String NAME = "Destroy the Hope";
     public static final String DESCRIPTION = "Until your next turn, if you apply a debuff also apply !M! Crackling_Soul.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
-    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
+    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.RARE;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
     private static final int COST = 1;
 
