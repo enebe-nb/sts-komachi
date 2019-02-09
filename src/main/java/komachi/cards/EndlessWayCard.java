@@ -25,7 +25,7 @@ public class EndlessWayCard extends AbstractCard {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.baseDamage = 5;
-        this.magicNumber = this.baseMagicNumber = 2;
+        this.magicNumber = this.baseMagicNumber = 3;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {

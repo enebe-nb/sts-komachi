@@ -26,8 +26,9 @@ public class MementoCard extends AbstractCard {
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        AbstractDungeon.actionManager.addToBottom(new DiscardPileToHandAction(1));
-        if (AbstractDungeon.player.hasOrb()) {
+        if (AbstractDungeon.player.discardPile.size() > 0) {
+            AbstractDungeon.actionManager.addToBottom(new DiscardPileToHandAction(1));
+        } if (AbstractDungeon.player.hasOrb()) {
             AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
             AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
         }

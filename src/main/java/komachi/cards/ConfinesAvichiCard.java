@@ -26,8 +26,8 @@ public class ConfinesAvichiCard extends AbstractCard {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.baseDamage = 9;
-        this.baseAltDamage = 13;
-        this.magicNumber = this.baseMagicNumber = 2;
+        this.baseAltDamage = 12;
+        this.magicNumber = this.baseMagicNumber = 3;
         this.isMultiDamage = true;
     }
 
