@@ -11,10 +11,11 @@ import komachi.KomachiMod;
 public class FarePower extends AbstractPower {
     public static final String POWER_ID = "Komachi:Power:Fare";
     public static final String NAME = "Fare";
-    public static PowerType POWER_TYPE = PowerType.DEBUFF;
+    public static final int MAX_GOLD = 12;
+    public static PowerType POWER_TYPE = PowerType.BUFF;
 
     public static String[] DESCRIPTIONS = new String[]{
-        "This enemy gives you ", " additional gold reward."
+        "This enemy gives you ", " additional gold reward. (max ", " stacks)"
     };
 
     public FarePower(AbstractCreature owner, int amount) {
@@ -22,13 +23,18 @@ public class FarePower extends AbstractPower {
         this.name = NAME;
         this.owner = owner;
         this.type = POWER_TYPE;
-        this.amount = amount;
+        this.amount = amount > MAX_GOLD ? MAX_GOLD : amount;
         this.img = new Texture(KomachiMod.getResourcePath("powers/fare.png"));
         updateDescription();
     }
 
+    public void stackPower(int amount) {
+        super.stackPower(amount);
+        if (this.amount > MAX_GOLD) this.amount = MAX_GOLD;
+    }
+
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + MAX_GOLD + DESCRIPTIONS[2];
     }
 
     public void onDeath() {

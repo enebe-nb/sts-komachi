@@ -25,7 +25,7 @@ public class SinRecollectionCard extends AbstractCard {
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SinRecollectionPower(player)));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new SinRecollectionPower(player, this.magicNumber), this.magicNumber));
     }
 
     public void upgrade() {

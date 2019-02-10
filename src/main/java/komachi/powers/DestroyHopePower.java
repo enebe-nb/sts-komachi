@@ -2,7 +2,7 @@ package komachi.powers;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -14,12 +14,9 @@ import komachi.KomachiMod;
 public class DestroyHopePower extends AbstractPower {
     public static final String POWER_ID = "Komachi:Power:DestroyHope";
     public static final String NAME = "Destroy the Hope";
-    public static PowerType POWER_TYPE = PowerType.DEBUFF;
+    public static String DESCRIPTION = "Until your next turn, if you apply a debuff also apply 1 Crackling_Soul.";
+    public static PowerType POWER_TYPE = PowerType.BUFF;
     private boolean justApplied = true;
-
-    public static String[] DESCRIPTIONS = new String[] {
-        "Until your next turn, if you apply a debuff also apply ", " Crackling_Soul."
-    };
 
     public DestroyHopePower(AbstractCreature owner, int amount) {
         this.ID = POWER_ID;
@@ -28,11 +25,7 @@ public class DestroyHopePower extends AbstractPower {
         this.amount = amount;
         this.type = POWER_TYPE;
         this.img = new Texture(KomachiMod.getResourcePath("powers/destroy-hope.png"));
-        updateDescription();
-    }
-
-    public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        this.description = DESCRIPTION;
     }
 
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
@@ -42,12 +35,12 @@ public class DestroyHopePower extends AbstractPower {
             && !target.hasPower(ArtifactPower.POWER_ID)
             && (power.ID != CracklingSoulPower.POWER_ID || !((CracklingSoulPower)power).fromDestroyHope)) {
 
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, source, new CracklingSoulPower(target, source, this.amount, true), this.amount));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, source, new CracklingSoulPower(target, source, 1, true), 1));
         }
     }
 
     public void atEndOfRound() {
         if (this.justApplied) this.justApplied = false;
-        else AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
+        else AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(this.owner, this.owner, POWER_ID, 1));
     }
 }

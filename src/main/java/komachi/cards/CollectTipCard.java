@@ -1,6 +1,7 @@
 package komachi.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -9,11 +10,12 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import komachi.KomachiMod;
 import komachi.patches.KomachiEnum;
+import komachi.powers.FarePower;
 
 public class CollectTipCard extends AbstractCard {
     public static final String ID = "Komachi:CollectTip";
     public static final String NAME = "Collect Tip";
-    public static final String DESCRIPTION = "Deal !D! damage. NL Gain !M! Gold.";
+    public static final String DESCRIPTION = "Deal !D! damage. NL Enemy gives !M! additional gold reward.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
@@ -28,7 +30,7 @@ public class CollectTipCard extends AbstractCard {
 
     public void use(AbstractPlayer player, AbstractMonster target) {
         AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        AbstractDungeon.player.gainGold(this.magicNumber);
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new FarePower(target, this.magicNumber), this.magicNumber));
     }
 
     public void upgrade() {

@@ -1,8 +1,7 @@
 package komachi.powers;
 
-
 import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -17,10 +16,11 @@ public class SinRecollectionPower extends AbstractPower {
     private boolean justApplied = true;
 
 
-    public SinRecollectionPower(AbstractCreature owner) {
+    public SinRecollectionPower(AbstractCreature owner, int amount) {
         this.ID = POWER_ID;
         this.name = NAME;
         this.owner = owner;
+        this.amount = amount;
         this.type = POWER_TYPE;
         this.img = new Texture(KomachiMod.getResourcePath("powers/sin-recollection.png"));
         this.description = DESCRIPTION;
@@ -28,6 +28,6 @@ public class SinRecollectionPower extends AbstractPower {
 
     public void atEndOfRound() {
         if (this.justApplied) this.justApplied = false;
-        else AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
+        else AbstractDungeon.actionManager.addToBottom(new ReducePowerAction(this.owner, this.owner, POWER_ID, 1));
     }
 }
