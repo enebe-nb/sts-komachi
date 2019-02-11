@@ -39,6 +39,7 @@ import komachi.cards.FellowTravelerCard;
 import komachi.cards.FinalJudgmentCard;
 import komachi.cards.FloatingSpiritCard;
 import komachi.cards.FlowRiverCard;
+import komachi.cards.FullSwingCard;
 import komachi.cards.GhostlyBarrierCard;
 import komachi.cards.GhostlyChainCard;
 import komachi.cards.GhostlySliceCard;
@@ -153,6 +154,7 @@ public class KomachiMod implements EditCardsSubscriber, EditCharactersSubscriber
         BaseMod.addCard(new FinalJudgmentCard());
         BaseMod.addCard(new FloatingSpiritCard());
         BaseMod.addCard(new FlowRiverCard());
+        BaseMod.addCard(new FullSwingCard());
         BaseMod.addCard(new GhostlyBarrierCard());
         BaseMod.addCard(new GhostlyChainCard());
         BaseMod.addCard(new GhostlySliceCard());
