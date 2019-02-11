@@ -20,7 +20,7 @@ public class FlowRiverCard extends AbstractCard {
     private static final int COST = 0;
 
     public FlowRiverCard() {
-        super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
+        super(ID, NAME, KomachiMod.getResourcePath("cards/flowriver.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.baseBlock = 2;
         this.magicNumber = this.baseMagicNumber = 2;

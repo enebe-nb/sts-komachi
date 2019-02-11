@@ -14,7 +14,7 @@ import komachi.powers.ScaredPower;
 public class DeathVisionCard extends AbstractCard {
     public static final String ID = "Komachi:DeathVision";
     public static final String NAME = "Death's Vision";
-    public static final String DESCRIPTION = "Apply !M! Crackling Soul. NL Consume: Enemy becomes scared. NL Exhaust.";
+    public static final String DESCRIPTION = "Apply !M! Crackling_Soul. NL Consume: Enemy becomes scared. NL Exhaust.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
@@ -23,7 +23,7 @@ public class DeathVisionCard extends AbstractCard {
     public DeathVisionCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = 5;
+        this.magicNumber = this.baseMagicNumber = 4;
         this.exhaust = true;
     }
 
@@ -38,7 +38,7 @@ public class DeathVisionCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(3);
+            upgradeMagicNumber(2);
         }
     }
 

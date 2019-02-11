@@ -21,7 +21,7 @@ public class HumanSpiritCard extends AbstractCard {
     private static final int COST = -2;
 
     public HumanSpiritCard() {
-        super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
+        super(ID, NAME, KomachiMod.getResourcePath("cards/humanspirit.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.baseBlock = 3;
         this.isEthereal = true;

@@ -19,7 +19,7 @@ public class ShortenLifeCard extends AbstractCard {
     private static final int COST = 6;
 
     public ShortenLifeCard() {
-        super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
+        super(ID, NAME, KomachiMod.getResourcePath("cards/shortenlife.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {

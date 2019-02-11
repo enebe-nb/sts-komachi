@@ -20,7 +20,7 @@ public class FastBreakCard extends AbstractCard {
     private static final int COST = 1;
 
     public FastBreakCard() {
-        super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
+        super(ID, NAME, KomachiMod.getResourcePath("cards/fastbreak.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {

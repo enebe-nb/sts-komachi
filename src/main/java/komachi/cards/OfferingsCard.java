@@ -13,7 +13,7 @@ public class OfferingsCard extends AbstractCard {
     public static final String ID = "Komachi:Offerings";
     public static final String NAME = "Offerings";
     public static final String DESCRIPTION = "Exhaust a card. NL Lose !M! gold. NL Gain an orb slot. NL Exhaust";
-    public static final String UPGRADE_DESCRIPTION = "Exhaust a card. NL Lose !M! gold. NL Gain an orb slot.";
+    public static final String UPGRADE_DESCRIPTION = "Exhaust a card. NL Lose !M! gold. NL Gain two orb slots. NL Exhaust";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.NONE;
@@ -29,14 +29,13 @@ public class OfferingsCard extends AbstractCard {
         int spendGold = AbstractDungeon.player.gold > this.magicNumber ? this.magicNumber : AbstractDungeon.player.gold;
         if (spendGold > 0) AbstractDungeon.player.loseGold(spendGold);
         AbstractDungeon.actionManager.addToBottom(new ExhaustAction(player, player, 1, false));
-        AbstractDungeon.actionManager.addToBottom(new IncreaseMaxOrbAction(1));
+        AbstractDungeon.actionManager.addToBottom(new IncreaseMaxOrbAction(this.upgraded ? 2 : 1));
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(-3);
-            this.exhaust = false;
+            upgradeMagicNumber(3);
             this.rawDescription = UPGRADE_DESCRIPTION;
             this.initializeDescription();
         }

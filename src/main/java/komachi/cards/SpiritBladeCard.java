@@ -19,7 +19,7 @@ public class SpiritBladeCard extends AbstractCard {
     private static final int COST = 1;
 
     public SpiritBladeCard() {
-        super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
+        super(ID, NAME, KomachiMod.getResourcePath("cards/spiritblade.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.magicNumber = this.baseMagicNumber = 3;
     }
