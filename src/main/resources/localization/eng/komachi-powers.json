@@ -1,0 +1,86 @@
+{
+    "Komachi:Power:CracklingSoul": {
+        "NAME": "Crackling Soul",
+        "DESCRIPTIONS": [
+            "At start of its next turn it loses #b", " HP for each #yDebuff."
+        ]
+    },
+    "Komachi:Power:DestroyHope": {
+        "NAME": "Destroy the Hope",
+        "DESCRIPTIONS": [
+            "Until your next turn, if you apply a #yDebuff also apply #b1 #yCrackling #ySoul."
+        ]
+    },
+    "Komachi:Power:Fare": {
+        "NAME": "Fare",
+        "DESCRIPTIONS": [
+            "This enemy gives you #b", " additional gold reward. (max #b", " stacks)"
+        ]
+    },
+    "Komachi:Power:FellowTraveller": {
+        "NAME": "Fellow Traveller",
+        "DESCRIPTIONS": [
+            "Whenever you play a #yBound card, Gain #b", " block."
+        ]
+    },
+    "Komachi:Power:FocusRemove": {
+        "NAME": "Focus Remove",
+        "DESCRIPTIONS": [
+            "After #b", " turns lose focus."
+        ]
+    },
+    "Komachi:Power:HiganRetour": {
+        "NAME": "Higan Retour",
+        "DESCRIPTIONS": [
+            "Whenever you play a #yBound card, Gain #b", " #yStrength for one turn."
+        ]
+    },
+    "Komachi:Power:Karma": {
+        "NAME": "Karma",
+        "DESCRIPTIONS": [
+            "When applying #yKarma, deal the #baccumulated #bvalue as damage. NL Each turn reduce the value by #bhalf rounded up."
+        ]
+    },
+    "Komachi:Power:Rest": {
+        "NAME": "Rest",
+        "DESCRIPTIONS": [
+            "At end of combat heals #b", ", reduce this value each turn."
+        ]
+    },
+    "Komachi:Power:Scared": {
+        "NAME": "Scared",
+        "DESCRIPTIONS": [
+            "It is #rscared."
+        ]
+    },
+    "Komachi:Power:SinRecollection": {
+        "NAME": "Sin Recollection",
+        "DESCRIPTIONS": [
+            "Until your next turn, if you would apply a random #yDebuff, instead you apply that much #yKarma."
+        ]
+    },
+    "Komachi:Power:SoulCall": {
+        "NAME": "Soul Call",
+        "DESCRIPTIONS": [
+            "At end of your turn bind #b", " #ySpirits."
+        ]
+    },
+    "Komachi:Power:SpiritBlade": {
+        "NAME": "Spirit Blade",
+        "DESCRIPTIONS": [
+            "When you consume a #ySpirit, deal #b", " damage to a random enemy."
+        ]
+    },
+    "Komachi:Power:TrueMeditation": {
+        "NAME": "True Meditation",
+        "DESCRIPTIONS": [
+            "Add a copy to your draw pile of the next #b", " powers you play this turn."
+        ]
+    },
+    "Komachi:Power:WanderingSpirits": {
+        "NAME": "Wandering Spirits",
+        "DESCRIPTIONS": [
+            "When you consume a spirit, draw #b", " cards."
+        ]
+    }
+}

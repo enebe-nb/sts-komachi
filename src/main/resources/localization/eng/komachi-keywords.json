@@ -1,0 +1,32 @@
+[
+    {
+        "PROPER": "Spirit",
+        "NAMES": [
+            "spirit",
+            "spirits"
+        ],
+        "DESCRIPTION": "When bound and at start of your turn, apply a random #yDebuff"    
+    },
+    {
+        "PROPER": "Consume",
+        "NAMES": [
+            "consume"
+        ],
+        "DESCRIPTION": "Remove a spirit to apply the card effect."
+    },
+    {
+        "PROPER": "Crackling Soul",
+        "NAMES": [
+            "crackling soul",
+            "crackling_soul"
+        ],
+        "DESCRIPTION": "At next turn the enemy loses HP for each debuff."
+    },
+    {
+        "PROPER": "Karma",
+        "NAMES": [
+            "karma"
+        ],
+        "DESCRIPTION": "When applying karma, deal the accumulated value as damage. NL Each turn reduce the value by half rounded up."
+    }
+]

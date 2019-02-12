@@ -4,19 +4,20 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import komachi.KomachiMod;
 
 public class SpiritBladePower extends AbstractPower {
     public static final String POWER_ID = "Komachi:Power:SpiritBlade";
-    public static final String NAME = "Spirit Blade";
     public static PowerType POWER_TYPE = PowerType.BUFF;
 
-    public static String[] DESCRIPTIONS = new String[] {
-        "When you consume a spirit, deal ", " damage to a random enemy."
-    }; 
+    private static PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+    public static final String NAME = powerStrings.NAME;
+    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public SpiritBladePower(AbstractCreature owner, int amount) {
         this.ID = POWER_ID;
@@ -28,11 +29,13 @@ public class SpiritBladePower extends AbstractPower {
         updateDescription();
     }
 
+    @Override
     public void updateDescription() {
         this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
 
-    public void onConsumeOrb() {
+    @Override
+    public void onSpecificTrigger() {
         AbstractCreature target = AbstractDungeon.getRandomMonster();
         if (target != null) {
             flash();

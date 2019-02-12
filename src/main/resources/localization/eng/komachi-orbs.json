@@ -1,0 +1,8 @@
+{
+    "Komachi:Orb:Spirit": {
+        "NAME": "Spirit",
+        "DESCRIPTION": [
+            "When bound and at start of yout turn, apply a random #yDebuff"
+        ]
+    }
+}

@@ -121,4 +121,9 @@ public abstract class AbstractCard extends CustomCard {
         this.altDamage = this.baseAltDamage += amount;
         if (this.altDamage > this.baseAltDamage || amount > 0) this.isAltDamageModified = true;
     }
+
+    public void upgradeDescription(String newDescription) {
+        this.rawDescription = newDescription;
+        initializeDescription();
+    }
 }

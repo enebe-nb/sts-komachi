@@ -3,7 +3,9 @@ package komachi.cards;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import komachi.KomachiMod;
@@ -11,13 +13,15 @@ import komachi.patches.KomachiEnum;
 
 public class EaseRestCard extends AbstractCard {
     public static final String ID = "Komachi:EaseRest";
-    public static final String NAME = "Ease Rest";
-    public static final String DESCRIPTION = "Gain !B! block. NL Draw a card.";
-    public static final String UPGRADE_DESCRIPTION = "Gain !B! block. NL Draw two cards.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
     private static final int COST = 1;
+
+    private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String NAME = cardStrings.NAME;
+    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
     public EaseRestCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
@@ -36,15 +40,7 @@ public class EaseRestCard extends AbstractCard {
             upgradeName();
             upgradeBlock(2);
             upgradeMagicNumber(1);
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+            upgradeDescription(UPGRADE_DESCRIPTION);
         }
     }
-
-    //static {
-        //cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-        //NAME = cardStrings.NAME;
-        //DESCRIPTION = cardStrings.DESCRIPTION;
-        //UPGRADED_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    //}
 }

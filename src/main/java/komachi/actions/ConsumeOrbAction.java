@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.defect.AnimateOrbAction;
 import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import komachi.KomachiMod;
 import komachi.powers.SpiritBladePower;
@@ -22,15 +23,15 @@ public class ConsumeOrbAction extends AbstractGameAction {
     }
   
     public void update() {
-        WanderingSpiritsPower wanderingSpirits = (WanderingSpiritsPower) AbstractDungeon.player.getPower(WanderingSpiritsPower.POWER_ID);
-        SpiritBladePower spiritBlade = (SpiritBladePower) AbstractDungeon.player.getPower(SpiritBladePower.POWER_ID);
+        AbstractPower wanderingSpirits = AbstractDungeon.player.getPower(WanderingSpiritsPower.POWER_ID);
+        AbstractPower spiritBlade = AbstractDungeon.player.getPower(SpiritBladePower.POWER_ID);
         AbstractDungeon.actionManager.addToBottom(new AnimateOrbAction(amount));
         for (int i = 0; i < this.amount && AbstractDungeon.player.hasOrb(); i++) {
             KomachiMod.consumedInThisCombat++;
             AbstractDungeon.actionManager.addToBottom(new AnimateOrbAction(1));
             AbstractDungeon.actionManager.addToBottom(new EvokeOrbAction(1));
-            if (wanderingSpirits != null) wanderingSpirits.onConsumeOrb();
-            if (spiritBlade != null) spiritBlade.onConsumeOrb();
+            if (wanderingSpirits != null) wanderingSpirits.onSpecificTrigger();
+            if (spiritBlade != null) spiritBlade.onSpecificTrigger();
             if (this.chain != null) AbstractDungeon.actionManager.addToBottom(this.chain);
         }
         

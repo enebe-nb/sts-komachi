@@ -3,8 +3,10 @@ package komachi.cards;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 
@@ -14,13 +16,15 @@ import komachi.patches.KomachiEnum;
 
 public class GhostlyChainCard extends AbstractCard {
     public static final String ID = "Komachi:GhostlyChain";
-    public static final String NAME = "Ghostly Chains";
-    public static final String DESCRIPTION = "ALL enemies loses !M! Strength. NL Consume: Play again. NL Ethereal";
-    public static final String UPGRADE_DESCRIPTION = "ALL enemies loses !M! Strength. NL Consume: Play again. NL Ethereal, Innate.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.POWER;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ALL_ENEMY;
     private static final int COST = 0;
+
+    private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String NAME = cardStrings.NAME;
+    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
     public GhostlyChainCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
@@ -51,17 +55,9 @@ public class GhostlyChainCard extends AbstractCard {
         if (!this.upgraded) {
             upgradeName();
             this.isInnate = true;
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            initializeDescription();
+            upgradeDescription(UPGRADE_DESCRIPTION);
         }
     }
-
-    //static {
-        //cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-        //NAME = cardStrings.NAME;
-        //DESCRIPTION = cardStrings.DESCRIPTION;
-        //UPGRADED_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    //}
 }
 
 

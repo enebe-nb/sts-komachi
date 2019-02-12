@@ -5,7 +5,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 
@@ -13,12 +15,11 @@ import komachi.KomachiMod;
 
 public class FocusRemovePower extends AbstractPower {
     public static final String POWER_ID = "Komachi:Power:FocusRemove";
-    public static final String NAME = "Focus Remove";
     public static PowerType POWER_TYPE = PowerType.DEBUFF;
 
-    public static String[] DESCRIPTIONS = new String[]{
-        "After ", " turns lose focus."
-    };
+    private static PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+    public static final String NAME = powerStrings.NAME;
+    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public FocusRemovePower(AbstractCreature owner, int amount) {
         this.ID = POWER_ID;
@@ -30,10 +31,12 @@ public class FocusRemovePower extends AbstractPower {
         updateDescription();
     }
 
+    @Override
     public void updateDescription() {
         this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
 
+    @Override
     public void atEndOfRound() {
         if (this.amount == 1) {
             AbstractPower focus = this.owner.getPower(FocusPower.POWER_ID);

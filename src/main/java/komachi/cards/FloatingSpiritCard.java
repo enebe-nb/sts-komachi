@@ -1,7 +1,9 @@
 package komachi.cards;
 
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
@@ -12,13 +14,15 @@ import komachi.patches.KomachiEnum;
 
 public class FloatingSpiritCard extends AbstractCard {
     public static final String ID = "Komachi:FloatingSpirit";
-    public static final String NAME = "Bound Floating Spirits";
-    public static final String DESCRIPTION = "Bind X Spirits.";
-    public static final String UPGRADE_DESCRIPTION = "Bind X+1 Spirits.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.SKILL;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.SELF;
     private static final int COST = -1;
+
+    private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String NAME = cardStrings.NAME;
+    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
     public FloatingSpiritCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
@@ -45,15 +49,7 @@ public class FloatingSpiritCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+            upgradeDescription(UPGRADE_DESCRIPTION);
         }
     }
-
-    //static {
-        //cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-        //NAME = cardStrings.NAME;
-        //DESCRIPTION = cardStrings.DESCRIPTION;
-        //UPGRADED_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    //}
 }

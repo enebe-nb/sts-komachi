@@ -4,7 +4,9 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import komachi.KomachiMod;
@@ -12,13 +14,15 @@ import komachi.patches.KomachiEnum;
 
 public class BeheadCard extends AbstractCard {
     public static final String ID = "Komachi:Behead";
-    public static final String NAME = "Behead";
-    public static final String DESCRIPTION = "Deal !D! damage. NL Receive !M! additional damage for each consumed spirit in this combat.";
-    public static final String EX_DESCRIPTION = " NL (total !ALTDMG! damage)";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
     private static final int COST = 2;
+
+    private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String NAME = cardStrings.NAME;
+    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String TOTAL_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 
     public BeheadCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
@@ -44,14 +48,14 @@ public class BeheadCard extends AbstractCard {
     public void applyPowers() {
         this.baseAltDamage = this.baseDamage + this.magicNumber * KomachiMod.consumedInThisCombat;
         super.applyPowers();
-        this.rawDescription = DESCRIPTION + EX_DESCRIPTION;
+        this.rawDescription = DESCRIPTION + TOTAL_DESCRIPTION;
         initializeDescription();
     }
 
     public void calculateCardDamage(AbstractMonster monster) {
         this.baseAltDamage = this.baseDamage + this.magicNumber * KomachiMod.consumedInThisCombat;
         super.calculateCardDamage(monster);
-        this.rawDescription = DESCRIPTION + EX_DESCRIPTION;
+        this.rawDescription = DESCRIPTION + TOTAL_DESCRIPTION;
         initializeDescription();
     }
 
@@ -59,13 +63,6 @@ public class BeheadCard extends AbstractCard {
         this.rawDescription = DESCRIPTION;
         initializeDescription();
     }
-
-    //static {
-        //cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-        //NAME = cardStrings.NAME;
-        //DESCRIPTION = cardStrings.DESCRIPTION;
-        //UPGRADED_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    //}
 }
 
 

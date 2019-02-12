@@ -11,5 +11,5 @@ public class KomachiEnum {
     @SpireEnum public static AbstractCard.CardTags TAG_BOUND;
     @SpireEnum public static AbstractPlayer.PlayerClass KOMACHI_CLASS;
 
-    public static final Color BG_COLOR = CardHelper.getColor(50.0F, 26.0F, 26.0F);
+    public static final Color BG_COLOR = CardHelper.getColor(0.31F, 0.09F, 0.09F);
 }

@@ -5,7 +5,9 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import komachi.KomachiMod;
@@ -14,12 +16,14 @@ import komachi.patches.KomachiEnum;
 
 public class WideSwingCard extends AbstractCard {
     public static final String ID = "Komachi:WideSwing";
-    public static final String NAME = "Wide Swing";
-    public static final String DESCRIPTION = "Deal !D! damage. Consume: Deal !ALTDMG! damage to ALL enemies instead.";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.BASIC;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
     private static final int COST = 1;
+
+    private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String NAME = cardStrings.NAME;
+    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
     public WideSwingCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/wideswing.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
@@ -45,13 +49,6 @@ public class WideSwingCard extends AbstractCard {
             upgradeAltDamage(5);
         }
     }
-
-    //static {
-        //cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-        //NAME = cardStrings.NAME;
-        //DESCRIPTION = cardStrings.DESCRIPTION;
-        //UPGRADED_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    //}
 }
 
 

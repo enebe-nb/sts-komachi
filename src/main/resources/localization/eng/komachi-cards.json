@@ -1,0 +1,249 @@
+{
+    "Komachi:AwaitedRest": {
+        "NAME": "Awaited Rest",
+        "DESCRIPTION": "Autoplay. NL At end of combat heals !M!, reduce this value each turn."
+    },
+    "Komachi:Behead": {
+        "NAME": "Behead",
+        "DESCRIPTION": "Deal !D! damage. NL Receive !M! additional damage for each consumed spirit in this combat.",
+        "EXTENDED_DESCRIPTION": [
+            " NL (total !ALTDMG! damage)"
+        ]
+    },
+    "Komachi:BoatSanzu": {
+        "NAME": "Boat of Sanzu",
+        "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable."
+    },
+    "Komachi:Bound": {
+        "NAME": "Bound",
+        "DESCRIPTION": "Bind a Spirit."
+    },
+    "Komachi:ChildSpirit": {
+        "NAME": "Bound Child Spirit",
+        "DESCRIPTION": "Bind a Spirit. NL Heal !M! for each bounded Spirit. NL Exhaust."
+    },
+    "Komachi:CollectTip": {
+        "NAME": "Collect Tip",
+        "DESCRIPTION": "Deal !D! damage. NL Enemy gives !M! additional gold reward."
+    },
+    "Komachi:ConfinesAvichi": {
+        "NAME": "Confines of Avichi",
+        "DESCRIPTION": "Deal !D! damage and apply !M! Karma to ALL enemies. NL Consume: Deal !ALTDMG! damage instead."
+    },
+    "Komachi:DeathVision": {
+        "NAME": "Death's Vision",
+        "DESCRIPTION": "Apply !M! Crackling_Soul. NL Consume: Enemy becomes scared. NL Exhaust."
+    },
+    "Komachi:Defend": {
+        "NAME": "Defend",
+        "DESCRIPTION": "Gain !B! block."
+    },
+    "Komachi:DestroyHope": {
+        "NAME": "Destroy the Hope",
+        "DESCRIPTION": "Until your next turn, if you apply a debuff also apply !M! Crackling_Soul."
+    },
+    "Komachi:DoubleCut": {
+        "NAME": "Double Cut",
+        "DESCRIPTION": "Deal !D! damage twice. NL Consume: Deal !ALTDMG! damage instead."
+    },
+    "Komachi:Drowning": {
+        "NAME": "Drowning",
+        "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak."
+    },
+    "Komachi:EarthSpirit": {
+        "NAME": "Bound Earth Spirit",
+        "DESCRIPTION": "Bind a Spirit. NL Gain !B! block for each bounded Spirit."
+    },
+    "Komachi:EaseRest": {
+        "NAME": "Ease Rest",
+        "DESCRIPTION": "Gain !B! block. NL Draw a card.",
+        "UPGRADE_DESCRIPTION": "Gain !B! block. NL Draw two cards."
+    },
+    "Komachi:EndlessWay": {
+        "NAME": "The Endless Way",
+        "DESCRIPTION": "Deal !D! damage and apply !M! karma."
+    },
+    "Komachi:EtherealCut": {
+        "NAME": "Ethereal Cut",
+        "DESCRIPTION": "Enemy loses !M! HP. NL Apply 2 Crackling_Soul"
+    },
+    "Komachi:EtherealSwipe": {
+        "NAME": "Ethereal Swipe",
+        "DESCRIPTION": "ALL enemies loses !M! HP. NL Apply 2 Crackling_Soul to ALL enemies."
+    },
+    "Komachi:Exorcism": {
+        "NAME": "Exorcism",
+        "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Consume: Remove a random debuff from you."
+    },
+    "Komachi:Faith": {
+        "NAME": "Faith",
+        "DESCRIPTION": "Gain 1 focus for !M! turns."
+    },
+    "Komachi:Fare": {
+        "NAME": "Fare",
+        "DESCRIPTION": "Enemies give !M! additional gold reward."
+    },
+    "Komachi:FastBreak": {
+        "NAME": "Fast Break",
+        "DESCRIPTION": "End this turn. NL Next turn gain the remaining [E] in this turn."
+    },
+    "Komachi:FellowTraveler": {
+        "NAME": "Fellow Traveler",
+        "DESCRIPTION": "Whenever you play a Bound card, Gain !M! block."
+    },
+    "Komachi:FinalJudgment": {
+        "NAME": "Final Judgment",
+        "DESCRIPTION": "Deal !D! damage. Consume: Deal !ALTDMG! damage instead."
+    },
+    "Komachi:FloatingSpirit": {
+        "NAME": "Bound Floating Spirits",
+        "DESCRIPTION": "Bind X Spirits.",
+        "UPGRADE_DESCRIPTION": "Bind X+1 Spirits."
+    },
+    "Komachi:FlowRiver": {
+        "NAME": "Flow of the River",
+        "DESCRIPTION": "Gain !B! block. NL You may discard a card to draw !M! cards"
+    },
+    "Komachi:FullSwing": {
+        "NAME": "Full Swing",
+        "DESCRIPTION": "Deal !D! damage X times. Consume: Deal !ALTDMG! damage to ALL enemies X times instead."
+    },
+    "Komachi:GhostlyBarrier": {
+        "NAME": "Ghostly Barrier",
+        "DESCRIPTION": "Gain !B! block. NL Consume: Play again. NL Ethereal"
+    },
+    "Komachi:GhostlyChain": {
+        "NAME": "Ghostly Chains",
+        "DESCRIPTION": "ALL enemies loses !M! Strength. NL Consume: Play again. NL Ethereal",
+        "UPGRADE_DESCRIPTION": "ALL enemies loses !M! Strength. NL Consume: Play again. NL Ethereal, Innate."
+    },
+    "Komachi:GhostlySlice": {
+        "NAME": "Ghostly Slice",
+        "DESCRIPTION": "Deal !D! damage to a random enemy. NL Consume: Play again. NL Ethereal"
+    },
+    "Komachi:GreedySpirit": {
+        "NAME": "Bound Greedy Spirits",
+        "DESCRIPTION": "Pay !M! gold. NL At end of your turn bind a Spirit."
+    },
+    "Komachi:HiganRetour": {
+        "NAME": "Higan Retour",
+        "DESCRIPTION": "When you play a Bound card, gain !M! Strength for one turn.",
+        "UPGRADE_DESCRIPTION": "When you play a Bound card, gain !M! Strength for one turn. NL Innate"
+    },
+    "Komachi:HumanSpirit": {
+        "NAME": "Human Spirit Passing By",
+        "DESCRIPTION": "Unplayable. NL When you draw this card bound a Spirit and gain !B! block. NL Ethereal.",
+        "UPGRADE_DESCRIPTION": "Unplayable. NL When you draw this card bound a Spirit and gain !B! block."
+    },
+    "Komachi:HungrySpirit": {
+        "NAME": "Bound Hungry Spirit",
+        "DESCRIPTION": "Bind a Spirit. NL Deal !D! damage for each bounded Spirit."
+    },
+    "Komachi:LifeSwap": {
+        "NAME": "Life Swap",
+        "DESCRIPTION": "Exchange two random enemies life bars. NL Exhaust.",
+        "UPGRADE_DESCRIPTION": "Exchange enemy life bar with a random enemy. NL Exhaust.",
+        "EXTENDED_DESCRIPTION": [
+            "Invalid target",
+            "Requires at least 2 targets"
+        ]
+    },
+    "Komachi:LonelySpirit": {
+        "NAME": "Bound Lonely Spirit",
+        "DESCRIPTION": "Bind a Spirit. NL If you have at least 2 Spirits, draw a card."
+    },
+    "Komachi:Memento": {
+        "NAME": "Memento",
+        "DESCRIPTION": "Put a card from discard pile into your hand. NL Consume: Gain [E] and !B! block."
+    },
+    "Komachi:Modesty": {
+        "NAME": "Modesty",
+        "DESCRIPTION": "Gain !M! Weak. NL Gain !M! orb slots."
+    },
+    "Komachi:Offerings": {
+        "NAME": "Offerings",
+        "DESCRIPTION": "Exhaust a card. NL Lose !M! gold. NL Gain an orb slot. NL Exhaust",
+        "UPGRADE_DESCRIPTION": "Exhaust a card. NL Lose !M! gold. NL Gain two orb slots. NL Exhaust"
+    },
+    "Komachi:PowerSharing": {
+        "NAME": "Power Sharing",
+        "DESCRIPTION": "Gain 1 Strength. NL Consume: Gain !M! Strength instead."
+    },
+    "Komachi:ReaperScythe": {
+        "NAME": "Reaper's Scythe",
+        "DESCRIPTION": "Deal !D! damage. NL Consume: Deal !ALTDMG! damage and apply !M! Crackling_Soul instead."
+    },
+    "Komachi:Remorse": {
+        "NAME": "Remorse",
+        "DESCRIPTION": "Apply !M! Karma. NL Consume: Apply another !M! Karma."
+    },
+    "Komachi:RepentantSoul": {
+        "NAME": "Repentant Soul",
+        "DESCRIPTION": "Deal !D! damage. NL If this card kills an enemy with Karma, permanently increase this card's damage by that much. NL Exhaust."
+    },
+    "Komachi:RiverMist": {
+        "NAME": "River's Mist",
+        "DESCRIPTION": "Gain !B! block. Apply !M! random debuff to ALL enemies."
+    },
+    "Komachi:Shortcut": {
+        "NAME": "Shortcut",
+        "DESCRIPTION": "Draw a card. NL Consume: Draw !M! cards instead."
+    },
+    "Komachi:ShortenLife": {
+        "NAME": "Shorten life",
+        "DESCRIPTION": "Reduce enemy MaxHP by a fourth. NL Cost 1 less each turn.",
+        "UPGRADE_DESCRIPTION": "Reduce enemy MaxHP and HP by a fourth. NL Cost 1 less each turn."
+    },
+    "Komachi:SinnerSpirit": {
+        "NAME": "Bound Sinner Spirit",
+        "DESCRIPTION": "Bind a Spirit. NL Apply !M! karma for each orb you have."
+    },
+    "Komachi:SinRecollection": {
+        "NAME": "Sin Recollection",
+        "DESCRIPTION": "Until your next turn, if you would apply a random debuff, instead you apply that much Karma."
+    },
+    "Komachi:SpiritBlade": {
+        "NAME": "Spirit Blade",
+        "DESCRIPTION": "When you consume a spirit, deal !M! damage to a random enemy."
+    },
+    "Komachi:Strike": {
+        "NAME": "Strike",
+        "DESCRIPTION": "Deal !D! damage."
+    },
+    "Komachi:TasteDeath": {
+        "NAME": "Taste of Death",
+        "DESCRIPTION": "Apply !M! Crackling_Soul to ALL enemies. NL Consume: Also apply !M! random debuff. NL Exhaust."
+    },
+    "Komachi:ThrowAway": {
+        "NAME": "Throw Away",
+        "DESCRIPTION": "Lose up to !M! gold. Deal twice that much damage.",
+        "EXTENDED_DESCRIPTION": [
+            " NL (current !D! damage)"
+        ]
+    },
+    "Komachi:TrueMeditation": {
+        "NAME": "True Meditation",
+        "DESCRIPTION": "Add a copy to your draw pile of the next power you play this turn.",
+        "UPGRADE_DESCRIPTION": "Add a copy to your draw pile of the next two powers you play this turn."
+    },
+    "Komachi:UnseenSpirit": {
+        "NAME": "Bound Unseen Spirit",
+        "DESCRIPTION": "Gain !B! block. NL Apply a random debuff."
+    },
+    "Komachi:VengefulSpirit": {
+        "NAME": "Bound Vengeful Spirit",
+        "DESCRIPTION": "Bind a Spirit. NL Deal !D! damage."
+    },
+    "Komachi:WanderingSpirits": {
+        "NAME": "Wandering Spirits",
+        "DESCRIPTION": "When you consume a spirit, draw a card."
+    },
+    "Komachi:WideSwing": {
+        "NAME": "Wide Swing",
+        "DESCRIPTION": "Deal !D! damage. Consume: Deal !ALTDMG! damage to ALL enemies instead."
+    },
+    "Komachi:YesterdayMoney": {
+        "NAME": "Yesterday's Money",
+        "DESCRIPTION": "Lose up to !M! gold. Deal !D! damage for each gold spent."
+    }
+}

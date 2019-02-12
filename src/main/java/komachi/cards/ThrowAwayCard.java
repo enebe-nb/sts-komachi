@@ -4,7 +4,9 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import komachi.KomachiMod;
@@ -12,13 +14,15 @@ import komachi.patches.KomachiEnum;
 
 public class ThrowAwayCard extends AbstractCard {
     public static final String ID = "Komachi:ThrowAway";
-    public static final String NAME = "Throw Away";
-    public static final String DESCRIPTION = "Lose up to !M! gold. Deal twice that much damage.";
-    public static final String EX_DESCRIPTION = " NL (current !D! damage)";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
     private static final int COST = 1;
+
+    private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String NAME = cardStrings.NAME;
+    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String TOTAL_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION[0];
 
     public ThrowAwayCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
@@ -47,7 +51,7 @@ public class ThrowAwayCard extends AbstractCard {
         int spendGold = AbstractDungeon.player.gold > this.magicNumber ? this.magicNumber : AbstractDungeon.player.gold;
         this.baseDamage = 2 * spendGold;
         super.applyPowers();
-        this.rawDescription = DESCRIPTION + EX_DESCRIPTION;
+        this.rawDescription = DESCRIPTION + TOTAL_DESCRIPTION;
         initializeDescription();
     }
 
@@ -55,7 +59,7 @@ public class ThrowAwayCard extends AbstractCard {
         int spendGold = AbstractDungeon.player.gold > this.magicNumber ? this.magicNumber : AbstractDungeon.player.gold;
         this.baseDamage = 2 * spendGold;
         super.calculateCardDamage(monster);
-        this.rawDescription = DESCRIPTION + EX_DESCRIPTION;
+        this.rawDescription = DESCRIPTION + TOTAL_DESCRIPTION;
         initializeDescription();
     }
 
@@ -63,13 +67,6 @@ public class ThrowAwayCard extends AbstractCard {
         this.rawDescription = DESCRIPTION;
         initializeDescription();
     }
-
-    //static {
-        //cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-        //NAME = cardStrings.NAME;
-        //DESCRIPTION = cardStrings.DESCRIPTION;
-        //UPGRADED_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
-    //}
 }
 
 

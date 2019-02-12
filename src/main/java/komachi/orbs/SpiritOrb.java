@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbActivateEffect;
 import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbPassiveEffect;
@@ -15,6 +16,10 @@ import komachi.actions.ApplySpiritAction;
 
 public class SpiritOrb extends AbstractOrb {
     private float vfxTimer = 0;
+
+    private static final OrbStrings orbStrings = CardCrawlGame.languagePack.getOrbString("Dark");
+    public static final String NAME = orbStrings.NAME;
+    public static final String[] DESCRIPTIONS = orbStrings.DESCRIPTION;
 
     public SpiritOrb() {
         this.ID = "Komachi:Orb:Spirit";
@@ -31,6 +36,7 @@ public class SpiritOrb extends AbstractOrb {
         this.applyFocus();
     }
 
+    @Override
     public void updateAnimation() {
         super.updateAnimation();
 

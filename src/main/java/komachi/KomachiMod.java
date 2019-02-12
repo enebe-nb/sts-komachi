@@ -4,6 +4,11 @@ import java.nio.charset.StandardCharsets;
 
 import com.badlogic.gdx.Gdx;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.google.gson.Gson;
+import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.localization.OrbStrings;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
@@ -73,6 +78,7 @@ import komachi.cards.WideSwingCard;
 import komachi.cards.YesterdayMoneyCard;
 import komachi.characters.KomachiCharacter;
 import komachi.helpers.AltDamageVariable;
+import komachi.helpers.KeywordData;
 import komachi.patches.KomachiEnum;
 import komachi.relics.FerryingBoatRelic;
 import komachi.relics.GhostlyCloakRelic;
@@ -192,19 +198,29 @@ public class KomachiMod implements EditCardsSubscriber, EditCharactersSubscriber
         BaseMod.addRelicToCustomPool(new OtherSidePierRelic(), KomachiEnum.KOMACHI_COLOR);
     }
 
+    private String getLanguageAbbr() {
+        return "eng";
+    }
+
     public void receiveEditKeywords() {
-        BaseMod.addKeyword("Spirit", new String[]{"spirit", "spirits"}, "When bound and at start of your turn, apply a random #yDebuff");
-        BaseMod.addKeyword("Consume", new String[]{"consume"}, "Remove a spirit to apply the card effect.");
-        BaseMod.addKeyword("Crackling Soul", new String[]{"crackling soul", "crackling_soul"}, "At next turn the enemy loses HP for each debuff.");
-        BaseMod.addKeyword("Rest", new String[]{"rest"}, "At end of combat heals, reduce the value each turn.");
-        BaseMod.addKeyword("Karma", new String[]{"karma"}, "When applying karma, deal the accumulated value as damage. NL Each turn reduce the value by half rounded up.");
+        final Gson gson = new Gson();
+        String language = getLanguageAbbr();
+
+        final String json = Gdx.files.internal("localization/" + language + "/komachi-keywords.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        KeywordData[] keywords = gson.fromJson(json, KeywordData[].class);
+        for (KeywordData keyword : keywords) {
+            BaseMod.addKeyword(keyword.PROPER, keyword.NAMES, keyword.DESCRIPTION);
+        }
     }
 
     public void receiveEditStrings() {
-        String language = "eng";
+        String language = getLanguageAbbr();
 
-        String relicStrings = Gdx.files.internal("localization/" + language + "/komachi-relics.json").readString(String.valueOf(StandardCharsets.UTF_8));
-        BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
+        BaseMod.loadCustomStringsFile(CardStrings.class, "localization/" + language + "/komachi-cards.json");
+        BaseMod.loadCustomStringsFile(CharacterStrings.class, "localization/" + language + "/komachi-characters.json");
+        BaseMod.loadCustomStringsFile(OrbStrings.class, "localization/" + language + "/komachi-orbs.json");
+        BaseMod.loadCustomStringsFile(PowerStrings.class, "localization/" + language + "/komachi-powers.json");
+        BaseMod.loadCustomStringsFile(RelicStrings.class, "localization/" + language + "/komachi-relics.json");
     }
 
     public void receiveOnBattleStart(AbstractRoom room) {

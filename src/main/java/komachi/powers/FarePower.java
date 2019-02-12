@@ -3,7 +3,9 @@ package komachi.powers;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -11,12 +13,11 @@ import komachi.KomachiMod;
 
 public class FarePower extends AbstractPower {
     public static final String POWER_ID = "Komachi:Power:Fare";
-    public static final String NAME = "Fare";
     public static PowerType POWER_TYPE = PowerType.BUFF;
 
-    public static String[] DESCRIPTIONS = new String[]{
-        "This enemy gives you ", " additional gold reward. (max ", " stacks)"
-    };
+    private static PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
+    public static final String NAME = powerStrings.NAME;
+    public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     public FarePower(AbstractCreature owner, int amount) {
         this.ID = POWER_ID;
@@ -29,21 +30,24 @@ public class FarePower extends AbstractPower {
         updateDescription();
     }
 
+    @Override
     public void stackPower(int amount) {
         super.stackPower(amount);
         int max = getMaxStack();
         if (this.amount > max) this.amount = max;
     }
 
+    @Override
     public void updateDescription() {
         this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + getMaxStack() + DESCRIPTIONS[2];
     }
 
+    @Override
     public void onDeath() {
         AbstractDungeon.getCurrRoom().addGoldToRewards(this.amount);
     }
 
-    public int getMaxStack() {
+    private int getMaxStack() {
         AbstractMonster owner = (AbstractMonster)this.owner;
         return owner.type == AbstractMonster.EnemyType.BOSS ? 24
             : owner.type == AbstractMonster.EnemyType.ELITE ? 18
