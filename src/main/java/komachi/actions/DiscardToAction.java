@@ -15,12 +15,11 @@ public class DiscardToAction extends AbstractGameAction {
     }
   
     public void update() {
-        if (AbstractDungeon.player.hand.isEmpty()) {
-            this.isDone = true;
-            return;
-        }
-
         if (this.duration == 0.5F) {
+            if (AbstractDungeon.player.hand.isEmpty()) {
+                this.isDone = true;
+                return;
+            }
             AbstractDungeon.handCardSelectScreen.open("Discard", this.amount, false, true);
             tickDuration();
             return;
