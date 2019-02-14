@@ -46,12 +46,12 @@ public class FullSwingCard extends AbstractCard {
         }
         if (!AbstractDungeon.player.hasOrb()) {
             for (int i = 0; i < effect; ++i) {
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
             }
         } else {
             AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
             for (int i = 0; i < effect; ++i) {
-                AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, this.multiAltDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, this.multiAltDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
             }
         }
         if (!this.freeToPlayOnce && effect > 0) player.energy.use(EnergyPanel.totalCount);
