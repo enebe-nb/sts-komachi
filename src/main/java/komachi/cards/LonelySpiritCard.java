@@ -23,7 +23,7 @@ public class LonelySpiritCard extends AbstractCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
     public LonelySpiritCard() {
-        super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
+        super(ID, NAME, KomachiMod.getResourcePath("cards/lonelyspirit.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.tags.add(KomachiEnum.TAG_BOUND);
     }

@@ -25,7 +25,7 @@ public class HungrySpiritCard extends AbstractCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
     public HungrySpiritCard() {
-        super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
+        super(ID, NAME, KomachiMod.getResourcePath("cards/hungryspirit.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.baseDamage = 4;
         this.tags.add(KomachiEnum.TAG_BOUND);

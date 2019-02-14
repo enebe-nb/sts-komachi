@@ -23,7 +23,7 @@ public class GreedySpiritCard extends AbstractCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
     public GreedySpiritCard() {
-        super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
+        super(ID, NAME, KomachiMod.getResourcePath("cards/greedyspirit.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.magicNumber = this.baseMagicNumber = 25;
         this.tags.add(KomachiEnum.TAG_BOUND);

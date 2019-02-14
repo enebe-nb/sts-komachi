@@ -1,7 +1,6 @@
 package komachi.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,14 +10,14 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import komachi.KomachiMod;
+import komachi.actions.ApplyRandomDebuffAction;
 import komachi.actions.ConsumeOrbAction;
 import komachi.patches.KomachiEnum;
-import komachi.powers.CracklingSoulPower;
 
 public class ReaperScytheCard extends AbstractCard {
     public static final String ID = "Komachi:ReaperScythe";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
-    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
+    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.BASIC;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
     private static final int COST = 1;
 
@@ -27,11 +26,10 @@ public class ReaperScytheCard extends AbstractCard {
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
     public ReaperScytheCard() {
-        super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
+        super(ID, NAME, KomachiMod.getResourcePath("cards/reaperscythe.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 7;
-        this.baseAltDamage = 9;
-        this.magicNumber = this.baseMagicNumber = 3;
+        this.baseDamage = 8;
+        this.baseAltDamage = 10;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
@@ -40,7 +38,7 @@ public class ReaperScytheCard extends AbstractCard {
         } else {
             AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
             AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.altDamage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new CracklingSoulPower(target, player, this.magicNumber), this.magicNumber));
+            AbstractDungeon.actionManager.addToBottom(new ApplyRandomDebuffAction(target, player, 1));
         }
     }
 
@@ -48,8 +46,7 @@ public class ReaperScytheCard extends AbstractCard {
         if (!this.upgraded) {
             upgradeName();
             upgradeDamage(3);
-            upgradeAltDamage(4);
-            upgradeMagicNumber(1);
+            upgradeAltDamage(5);
         }
     }
 }

@@ -19,7 +19,7 @@ import komachi.patches.KomachiEnum;
 public class FullSwingCard extends AbstractCard {
     public static final String ID = "Komachi:FullSwing";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
-    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.RARE;
+    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
     private static final int COST = -1;
 
@@ -54,6 +54,7 @@ public class FullSwingCard extends AbstractCard {
                 AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, this.multiAltDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
             }
         }
+        if (!this.freeToPlayOnce && effect > 0) player.energy.use(EnergyPanel.totalCount);
     }
 
     public void upgrade() {

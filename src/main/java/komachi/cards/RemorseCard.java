@@ -26,14 +26,14 @@ public class RemorseCard extends AbstractCard {
     public RemorseCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = 4;
+        this.magicNumber = this.baseMagicNumber = 5;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new KarmaPower(target, player, this.magicNumber), this.magicNumber));
         if (AbstractDungeon.player.hasOrb()) {
             AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new KarmaPower(target, player, this.magicNumber), this.magicNumber));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new KarmaPower(target, player, 2), 2));
         }
     }
 

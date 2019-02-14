@@ -17,7 +17,7 @@ import komachi.patches.KomachiEnum;
 public class WideSwingCard extends AbstractCard {
     public static final String ID = "Komachi:WideSwing";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
-    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.BASIC;
+    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.COMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
     private static final int COST = 1;
 
@@ -29,7 +29,7 @@ public class WideSwingCard extends AbstractCard {
         super(ID, NAME, KomachiMod.getResourcePath("cards/wideswing.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
         this.baseDamage = 8;
-        this.baseAltDamage = 11;
+        this.baseAltDamage = 12;
         this.isMultiDamage = true;
     }
 
@@ -45,7 +45,7 @@ public class WideSwingCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(2);
+            upgradeDamage(3);
             upgradeAltDamage(5);
         }
     }

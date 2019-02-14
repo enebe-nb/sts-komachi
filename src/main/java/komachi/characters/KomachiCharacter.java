@@ -23,8 +23,8 @@ import komachi.KomachiMod;
 import komachi.cards.AbstractCard;
 import komachi.cards.BoundCard;
 import komachi.cards.DefendCard;
+import komachi.cards.ReaperScytheCard;
 import komachi.cards.StrikeCard;
-import komachi.cards.WideSwingCard;
 import komachi.patches.KomachiEnum;
 import komachi.relics.FerryingBoatRelic;
 
@@ -76,7 +76,7 @@ public class KomachiCharacter extends CustomPlayer {
         deck.add(DefendCard.ID);
         deck.add(DefendCard.ID);
         deck.add(BoundCard.ID);
-        deck.add(WideSwingCard.ID);
+        deck.add(ReaperScytheCard.ID);
         return deck;
     }
 

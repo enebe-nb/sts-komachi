@@ -31,7 +31,7 @@
         "DESCRIPTION": "Deal !D! damage and apply !M! Karma to ALL enemies. NL Consume: Deal !ALTDMG! damage instead."
     },
     "Komachi:DeathVision": {
-        "NAME": "Death's Vision",
+        "NAME": "Death Vision",
         "DESCRIPTION": "Apply !M! Crackling_Soul. NL Consume: Enemy becomes scared. NL Exhaust."
     },
     "Komachi:Defend": {
@@ -61,11 +61,11 @@
     },
     "Komachi:EndlessWay": {
         "NAME": "The Endless Way",
-        "DESCRIPTION": "Deal !D! damage and apply !M! karma."
+        "DESCRIPTION": "Deal !D! damage and apply !M! Karma."
     },
     "Komachi:EtherealCut": {
         "NAME": "Ethereal Cut",
-        "DESCRIPTION": "Enemy loses !M! HP. NL Apply 2 Crackling_Soul"
+        "DESCRIPTION": "Enemy loses !M! HP. NL Apply 2 Crackling_Soul."
     },
     "Komachi:EtherealSwipe": {
         "NAME": "Ethereal Swipe",
@@ -102,7 +102,7 @@
     },
     "Komachi:FlowRiver": {
         "NAME": "Flow of the River",
-        "DESCRIPTION": "Gain !B! block. NL You may discard a card to draw !M! cards"
+        "DESCRIPTION": "Gain !B! block. NL You may discard a card to draw !M! cards."
     },
     "Komachi:FullSwing": {
         "NAME": "Full Swing",
@@ -110,16 +110,16 @@
     },
     "Komachi:GhostlyBarrier": {
         "NAME": "Ghostly Barrier",
-        "DESCRIPTION": "Gain !B! block. NL Consume: Play again. NL Ethereal"
+        "DESCRIPTION": "Gain !B! block. NL Consume: Play again. NL Ethereal."
     },
     "Komachi:GhostlyChain": {
         "NAME": "Ghostly Chains",
-        "DESCRIPTION": "ALL enemies loses !M! Strength. NL Consume: Play again. NL Ethereal",
+        "DESCRIPTION": "ALL enemies loses !M! Strength. NL Consume: Play again. NL Ethereal.",
         "UPGRADE_DESCRIPTION": "ALL enemies loses !M! Strength. NL Consume: Play again. NL Ethereal, Innate."
     },
     "Komachi:GhostlySlice": {
         "NAME": "Ghostly Slice",
-        "DESCRIPTION": "Deal !D! damage to a random enemy. NL Consume: Play again. NL Ethereal"
+        "DESCRIPTION": "Deal !D! damage to a random enemy. NL Consume: Play again. NL Ethereal."
     },
     "Komachi:GreedySpirit": {
         "NAME": "Bound Greedy Spirits",
@@ -128,7 +128,7 @@
     "Komachi:HiganRetour": {
         "NAME": "Higan Retour",
         "DESCRIPTION": "When you play a Bound card, gain !M! Strength for one turn.",
-        "UPGRADE_DESCRIPTION": "When you play a Bound card, gain !M! Strength for one turn. NL Innate"
+        "UPGRADE_DESCRIPTION": "When you play a Bound card, gain !M! Strength for one turn. NL Innate."
     },
     "Komachi:HumanSpirit": {
         "NAME": "Human Spirit Passing By",
@@ -162,8 +162,8 @@
     },
     "Komachi:Offerings": {
         "NAME": "Offerings",
-        "DESCRIPTION": "Exhaust a card. NL Lose !M! gold. NL Gain an orb slot. NL Exhaust",
-        "UPGRADE_DESCRIPTION": "Exhaust a card. NL Lose !M! gold. NL Gain two orb slots. NL Exhaust"
+        "DESCRIPTION": "Exhaust a card. NL Lose !M! gold. NL Gain an orb slot. NL Exhaust.",
+        "UPGRADE_DESCRIPTION": "Exhaust a card. NL Lose !M! gold. NL Gain two orb slots. NL Exhaust."
     },
     "Komachi:PowerSharing": {
         "NAME": "Power Sharing",
@@ -171,11 +171,11 @@
     },
     "Komachi:ReaperScythe": {
         "NAME": "Reaper's Scythe",
-        "DESCRIPTION": "Deal !D! damage. NL Consume: Deal !ALTDMG! damage and apply !M! Crackling_Soul instead."
+        "DESCRIPTION": "Deal !D! damage. NL Consume: Deal !ALTDMG! damage and apply a random Debuff instead."
     },
     "Komachi:Remorse": {
         "NAME": "Remorse",
-        "DESCRIPTION": "Apply !M! Karma. NL Consume: Apply another !M! Karma."
+        "DESCRIPTION": "Apply !M! Karma. NL Consume: Apply another 2 Karma."
     },
     "Komachi:RepentantSoul": {
         "NAME": "Repentant Soul",
@@ -196,7 +196,7 @@
     },
     "Komachi:SinnerSpirit": {
         "NAME": "Bound Sinner Spirit",
-        "DESCRIPTION": "Bind a Spirit. NL Apply !M! karma for each orb you have."
+        "DESCRIPTION": "Bind a Spirit. NL Apply !M! Karma for each orb you have."
     },
     "Komachi:SinRecollection": {
         "NAME": "Sin Recollection",
@@ -212,7 +212,7 @@
     },
     "Komachi:TasteDeath": {
         "NAME": "Taste of Death",
-        "DESCRIPTION": "Apply !M! Crackling_Soul to ALL enemies. NL Consume: Also apply !M! random debuff. NL Exhaust."
+        "DESCRIPTION": "Apply 4 Crackling_Soul to ALL enemies. NL Consume: Also apply !M! random debuff. NL Exhaust"
     },
     "Komachi:ThrowAway": {
         "NAME": "Throw Away",

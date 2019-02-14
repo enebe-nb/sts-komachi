@@ -34,7 +34,7 @@ public class TasteDeathCard extends AbstractCard {
 
     public void use(AbstractPlayer player, AbstractMonster target) {
         for (AbstractCreature monster : AbstractDungeon.getMonsters().monsters) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new CracklingSoulPower(monster, player, this.magicNumber), this.magicNumber));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new CracklingSoulPower(monster, player, 4), 4));
         } if (AbstractDungeon.player.hasOrb()) {
             AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
             for (AbstractCreature monster : AbstractDungeon.getMonsters().monsters) {
