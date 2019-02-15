@@ -31,6 +31,8 @@ public class AwaitedRestCard extends AbstractCard {
 
     public void use(AbstractPlayer player, AbstractMonster target) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new RestPower(player, this.magicNumber), this.magicNumber));
+        AbstractDungeon.player.discardPile.removeCard(this);
+        AbstractDungeon.player.drawPile.removeCard(this);
     }
 
     public void triggerWhenDrawn() {

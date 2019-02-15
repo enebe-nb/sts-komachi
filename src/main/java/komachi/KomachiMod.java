@@ -40,6 +40,7 @@ import komachi.cards.ExorcismCard;
 import komachi.cards.FaithCard;
 import komachi.cards.FareCard;
 import komachi.cards.FastBreakCard;
+import komachi.cards.FearAuraCard;
 import komachi.cards.FellowTravelerCard;
 import komachi.cards.FinalJudgmentCard;
 import komachi.cards.FloatingSpiritCard;
@@ -156,6 +157,7 @@ public class KomachiMod implements EditCardsSubscriber, EditCharactersSubscriber
         BaseMod.addCard(new FaithCard());
         BaseMod.addCard(new FareCard());
         BaseMod.addCard(new FastBreakCard());
+        BaseMod.addCard(new FearAuraCard());
         BaseMod.addCard(new FellowTravelerCard());
         BaseMod.addCard(new FinalJudgmentCard());
         BaseMod.addCard(new FloatingSpiritCard());

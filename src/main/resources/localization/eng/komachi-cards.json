@@ -87,6 +87,10 @@
         "NAME": "Fast Break",
         "DESCRIPTION": "End this turn. NL Next turn gain the remaining [E] in this turn."
     },
+    "Komachi:FearAura": {
+        "NAME": "Fear Aura",
+        "DESCRIPTION": "Gain !B! Block and apply !M! Crackling_Soul."
+    },
     "Komachi:FellowTraveler": {
         "NAME": "Fellow Traveler",
         "DESCRIPTION": "Whenever you play a Bound card, Gain !M! block."
