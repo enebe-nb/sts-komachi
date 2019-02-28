@@ -1,10 +1,8 @@
 package komachi.cards;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -31,23 +29,17 @@ public class GhostlyChainCard extends AbstractCard {
 
         this.magicNumber = this.baseMagicNumber = 1;
         this.isEthereal = true;
+
+        this.tags.add(KomachiEnum.TAG_CONSUME);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
+        int orbs = AbstractDungeon.player.filledOrbCount();
+        for (int i = 0; i < orbs; ++i) {
+            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction());
+        }
         for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new StrengthPower(monster, -this.magicNumber), -this.magicNumber));
-        } if (AbstractDungeon.player.hasOrb()) {
-            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
-
-            com.megacrit.cardcrawl.cards.AbstractCard tmp = this.makeSameInstanceOf();
-            AbstractDungeon.player.limbo.addToBottom(tmp);
-            tmp.current_x = this.current_x;
-            tmp.current_y = this.current_y;
-            tmp.target_x = (Settings.WIDTH / 2.0F - 300.0F * Settings.scale);
-            tmp.target_y = (Settings.HEIGHT / 2.0F);
-            tmp.freeToPlayOnce = true;
-            tmp.purgeOnUse = true;
-            AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(tmp, target, this.energyOnUse));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new StrengthPower(monster, -this.magicNumber * orbs), -this.magicNumber * orbs));
         }
     }
 

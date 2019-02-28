@@ -17,6 +17,11 @@ public class AltDamageVariable extends DynamicVariable
     }
 
     @Override
+    public void setIsModified(AbstractCard card, boolean v) {
+        if (card instanceof komachi.cards.AbstractCard) ((komachi.cards.AbstractCard)card).isAltDamageModified = v;
+    }
+
+    @Override
     public int value(AbstractCard card) {
         if (card instanceof komachi.cards.AbstractCard) return ((komachi.cards.AbstractCard)card).altDamage;
         return card.damage;
@@ -30,7 +35,7 @@ public class AltDamageVariable extends DynamicVariable
 
     @Override
     public boolean upgraded(AbstractCard card) {
-        if (card instanceof komachi.cards.AbstractCard) return ((komachi.cards.AbstractCard)card).upgradeAltDamage;
+        if (card instanceof komachi.cards.AbstractCard) return ((komachi.cards.AbstractCard)card).upgradedAltDamage;
         return false;
     }
 }

@@ -28,7 +28,7 @@ public class BoatSanzuCard extends AbstractCard {
     public BoatSanzuCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 7;
+        this.baseDamage = 5;
         this.magicNumber = this.baseMagicNumber = 1;
     }
 

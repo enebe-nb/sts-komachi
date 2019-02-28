@@ -25,7 +25,7 @@ public class DefendCard extends AbstractCard {
     public DefendCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/defend.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseBlock = 5;
+        this.baseBlock = 4;
         this.tags.add(BaseModCardTags.BASIC_DEFEND);
     }
 
@@ -36,7 +36,7 @@ public class DefendCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeBlock(3);
+            upgradeBlock(2);
         }
     }
 }

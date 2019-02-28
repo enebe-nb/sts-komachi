@@ -44,6 +44,6 @@ public class OtherSidePierRelic extends CustomRelic {
 
     @Override
     public void atTurnStart() {
-        AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
+        AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction());
     }
 }

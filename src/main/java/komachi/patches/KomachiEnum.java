@@ -9,6 +9,8 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 public class KomachiEnum {
     @SpireEnum public static AbstractCard.CardColor KOMACHI_COLOR;
     @SpireEnum public static AbstractCard.CardTags TAG_BOUND;
+    @SpireEnum public static AbstractCard.CardTags TAG_CONSUME;
+    @SpireEnum public static AbstractCard.CardTags TAG_GHOSTLY;
     @SpireEnum public static AbstractPlayer.PlayerClass KOMACHI_CLASS;
 
     public static final Color BG_COLOR = CardHelper.getColor(0.31F, 0.09F, 0.09F);

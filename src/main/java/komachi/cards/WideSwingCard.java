@@ -28,25 +28,25 @@ public class WideSwingCard extends AbstractCard {
     public WideSwingCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/wideswing.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 8;
-        this.baseAltDamage = 12;
+        this.baseDamage = 7;
+        this.baseAltDamage = 9;
         this.isMultiDamage = true;
+
+        this.tags.add(KomachiEnum.TAG_CONSUME);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        if (!AbstractDungeon.player.hasOrb()) {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        } else {
-            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
-            AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, this.multiAltDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        }
+        AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(
+            new DamageAllEnemiesAction(player, this.multiAltDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL),
+            new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)
+        ));
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(3);
-            upgradeAltDamage(5);
+            upgradeDamage(2);
+            upgradeAltDamage(3);
         }
     }
 }

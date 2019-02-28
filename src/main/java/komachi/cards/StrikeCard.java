@@ -27,7 +27,7 @@ public class StrikeCard extends AbstractCard {
     public StrikeCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/strike.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 6;
+        this.baseDamage = 5;
         this.tags.add(BaseModCardTags.BASIC_STRIKE);
         this.tags.add(AbstractCard.CardTags.STRIKE);
     }
@@ -39,7 +39,7 @@ public class StrikeCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(3);
+            upgradeDamage(2);
         }
     }
 }

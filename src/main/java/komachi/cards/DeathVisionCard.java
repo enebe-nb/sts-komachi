@@ -27,22 +27,21 @@ public class DeathVisionCard extends AbstractCard {
     public DeathVisionCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = 4;
+        this.magicNumber = this.baseMagicNumber = 5;
         this.exhaust = true;
+
+        this.tags.add(KomachiEnum.TAG_CONSUME);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new CracklingSoulPower(target, player, this.magicNumber), this.magicNumber));
-        if (AbstractDungeon.player.hasOrb()) {
-            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, player, new ScaredPower(target)));
-        }
+        AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(new ApplyPowerAction(target, player, new ScaredPower(target))));
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(2);
+            upgradeMagicNumber(3);
         }
     }
 }

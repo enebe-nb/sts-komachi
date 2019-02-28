@@ -28,7 +28,7 @@ public class DrowningCard extends AbstractCard {
     public DrowningCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 7;
+        this.baseDamage = 6;
         this.magicNumber = this.baseMagicNumber = 1;
     }
 

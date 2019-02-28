@@ -26,16 +26,17 @@ public class PowerSharingCard extends AbstractCard {
     public PowerSharingCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = 3;
+        this.magicNumber = this.baseMagicNumber = 1;
+        this.altMagicNumber = this.baseAltMagicNumber = 2;
+
+        this.tags.add(KomachiEnum.TAG_CONSUME);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        if (AbstractDungeon.player.hasOrb()) {
-            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new StrengthPower(player, this.magicNumber), this.magicNumber));
-        } else {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(player, player, new StrengthPower(player, 1), 1));
-        }
+        AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(
+            new ApplyPowerAction(player, player, new StrengthPower(player, this.altMagicNumber), this.altMagicNumber),
+            new ApplyPowerAction(player, player, new StrengthPower(player, this.magicNumber), this.magicNumber)
+        ));
     }
 
     public void upgrade() {

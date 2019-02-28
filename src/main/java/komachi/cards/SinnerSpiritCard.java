@@ -26,7 +26,7 @@ public class SinnerSpiritCard extends AbstractCard {
     public SinnerSpiritCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/sinnerspirit.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = 1;
+        this.magicNumber = this.baseMagicNumber = 2;
         this.tags.add(KomachiEnum.TAG_BOUND);
     }
 

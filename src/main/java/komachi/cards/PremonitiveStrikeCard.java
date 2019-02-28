@@ -2,23 +2,22 @@ package komachi.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.unique.RitualDaggerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import komachi.KomachiMod;
+import komachi.actions.ConsumeOrbAction;
+import komachi.actions.PlayACopyAction;
 import komachi.patches.KomachiEnum;
-import komachi.powers.KarmaPower;
 
-public class RepentantSoulCard extends AbstractCard {
-    public static final String ID = "Komachi:RepentantSoul";
+public class PremonitiveStrikeCard extends AbstractCard {
+    public static final String ID = "Komachi:PremonitiveStrike";
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
-    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.RARE;
+    private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.UNCOMMON;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
     private static final int COST = 1;
 
@@ -26,26 +25,25 @@ public class RepentantSoulCard extends AbstractCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
-    public RepentantSoulCard() {
+    public PremonitiveStrikeCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = this.misc = 7;
-        this.exhaust = true;
+        this.baseDamage = 5;
+        this.tags.add(AbstractCard.CardTags.STRIKE);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        AbstractPower power = target.getPower(KarmaPower.POWER_ID);
-        if (power != null && power.amount > 0) {
-            AbstractDungeon.actionManager.addToBottom(new RitualDaggerAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), power.amount, this.uuid));
-        } else {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        }
+        AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        if (!AbstractDungeon.player.drawPile.isEmpty() && !this.isJustCopied) {
+            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(new PlayACopyAction(AbstractDungeon.player.drawPile.getTopCard(), target)));
+        } else AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction());
+        this.isJustCopied = false;
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(4);
+            upgradeDamage(5);
         }
     }
 }

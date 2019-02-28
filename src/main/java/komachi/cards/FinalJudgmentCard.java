@@ -32,6 +32,8 @@ public class FinalJudgmentCard extends AbstractCard {
 
         this.baseDamage = 22;
         this.baseAltDamage = 33;
+
+        this.tags.add(KomachiEnum.TAG_CONSUME);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
@@ -40,12 +42,10 @@ public class FinalJudgmentCard extends AbstractCard {
             AbstractDungeon.actionManager.addToBottom(new WaitAction(0.8F));
         }
         
-        if (!AbstractDungeon.player.hasOrb()) {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
-        } else {
-            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.altDamage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
-        }
+        AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(
+            new DamageAction(target, new DamageInfo(player, this.altDamage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.NONE),
+            new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.NONE)
+        ));
     }
 
     public void upgrade() {

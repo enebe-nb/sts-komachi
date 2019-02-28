@@ -1,16 +1,15 @@
 package komachi.cards;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import komachi.KomachiMod;
 import komachi.actions.ConsumeOrbAction;
+import komachi.actions.PlayACopyAction;
 import komachi.patches.KomachiEnum;
 
 public class GhostlyBarrierCard extends AbstractCard {
@@ -29,23 +28,14 @@ public class GhostlyBarrierCard extends AbstractCard {
 
         this.baseBlock = 6;
         this.isEthereal = true;
+
+        this.tags.add(KomachiEnum.TAG_CONSUME);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
-        if (AbstractDungeon.player.hasOrb()) {
-            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
-
-            com.megacrit.cardcrawl.cards.AbstractCard tmp = this.makeSameInstanceOf();
-            AbstractDungeon.player.limbo.addToBottom(tmp);
-            tmp.current_x = this.current_x;
-            tmp.current_y = this.current_y;
-            tmp.target_x = (Settings.WIDTH / 2.0F - 300.0F * Settings.scale);
-            tmp.target_y = (Settings.HEIGHT / 2.0F);
-            tmp.freeToPlayOnce = true;
-            tmp.purgeOnUse = true;
-            AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(tmp, target, this.energyOnUse));
-        }
+        if (!this.isJustCopied) AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(new PlayACopyAction(this, target)));
+        this.isJustCopied = false;
     }
 
     public void upgrade() {

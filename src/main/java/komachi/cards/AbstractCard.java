@@ -14,8 +14,15 @@ public abstract class AbstractCard extends CustomCard {
     public int baseAltDamage = -1;
     public int altDamage = -1;
     public int[] multiAltDamage;
-    public boolean upgradeAltDamage = false;
+    public boolean upgradedAltDamage = false;
     public boolean isAltDamageModified = false;
+
+    public int baseAltMagicNumber = -1;
+    public int altMagicNumber = -1;
+    public boolean upgradedAltMagicNumber = false;
+    public boolean isAltMagicNumberModified = false;
+
+    public boolean isJustCopied = false;
 
     public AbstractCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
@@ -119,11 +126,25 @@ public abstract class AbstractCard extends CustomCard {
 
     public void upgradeAltDamage(int amount) {
         this.altDamage = this.baseAltDamage += amount;
-        if (this.altDamage > this.baseAltDamage || amount > 0) this.isAltDamageModified = true;
+        this.upgradedAltDamage = true;
+    }
+
+    protected void upgradeAltMagicNumber(int amount) {
+        this.altMagicNumber = this.baseAltMagicNumber += amount;
+        this.upgradedAltMagicNumber = true;
     }
 
     public void upgradeDescription(String newDescription) {
         this.rawDescription = newDescription;
         initializeDescription();
+    }
+
+    @Override
+    public void resetAttributes() {
+        super.resetAttributes();
+        this.altDamage = this.baseAltDamage;
+        this.isAltDamageModified = false;
+        this.altMagicNumber = this.baseAltMagicNumber;
+        this.isAltMagicNumberModified = false;
     }
 }

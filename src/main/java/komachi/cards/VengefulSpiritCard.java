@@ -27,7 +27,7 @@ public class VengefulSpiritCard extends AbstractCard {
     public VengefulSpiritCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/vengefulspirit.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 6;
+        this.baseDamage = 5;
         this.tags.add(KomachiEnum.TAG_BOUND);
     }
 

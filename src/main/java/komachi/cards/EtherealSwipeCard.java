@@ -28,20 +28,22 @@ public class EtherealSwipeCard extends AbstractCard {
     public EtherealSwipeCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = 13;
+        this.magicNumber = this.baseMagicNumber = 10;
+        this.altMagicNumber = this.baseAltMagicNumber = 3;
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
         for (AbstractMonster monster : AbstractDungeon.getMonsters().monsters) {
             AbstractDungeon.actionManager.addToBottom(new DamageAction(monster, new DamageInfo(player, this.magicNumber, DamageInfo.DamageType.HP_LOSS), AbstractGameAction.AttackEffect.SLASH_HEAVY));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new CracklingSoulPower(monster, player, 2), 2));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(monster, player, new CracklingSoulPower(monster, player, this.altMagicNumber), this.altMagicNumber));
         }
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(7);
+            upgradeMagicNumber(4);
+            upgradeAltMagicNumber(1);
         }
     }
 }

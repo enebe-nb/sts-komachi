@@ -28,7 +28,7 @@ public class CollectTipCard extends AbstractCard {
     public CollectTipCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 6;
+        this.baseDamage = 5;
         this.magicNumber = this.baseMagicNumber = 2;
     }
 
@@ -40,7 +40,7 @@ public class CollectTipCard extends AbstractCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeDamage(3);
+            upgradeDamage(2);
         }
     }
 }

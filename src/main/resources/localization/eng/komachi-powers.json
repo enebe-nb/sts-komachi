@@ -29,10 +29,23 @@
             "After #b", " turns lose focus."
         ]
     },
+    "Komachi:Power:HellVision": {
+        "NAME": "Hell Vision",
+        "DESCRIPTIONS": [
+            "Whenever you apply Karma, increase the amount by ",
+            "."
+        ]
+    },
     "Komachi:Power:HiganRetour": {
         "NAME": "Higan Retour",
         "DESCRIPTIONS": [
             "Whenever you play a #yBound card, Gain #b", " #yStrength for one turn."
+        ]
+    },
+    "Komachi:Power:InnerSoul": {
+        "NAME": "Inner Soul",
+        "DESCRIPTIONS": [
+            "When you play a card with consume, it don't remove spirits, Exhaust it."
         ]
     },
     "Komachi:Power:Karma": {

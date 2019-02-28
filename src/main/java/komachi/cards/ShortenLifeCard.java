@@ -15,7 +15,8 @@ public class ShortenLifeCard extends AbstractCard {
     private static final AbstractCard.CardType TYPE = AbstractCard.CardType.ATTACK;
     private static final AbstractCard.CardRarity RARITY = AbstractCard.CardRarity.RARE;
     private static final AbstractCard.CardTarget TARGET = AbstractCard.CardTarget.ENEMY;
-    private static final int COST = 6;
+    private static final int COST = 4;
+    private static final int UPG_COST = 3;
 
     private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
@@ -28,16 +29,18 @@ public class ShortenLifeCard extends AbstractCard {
 
     public void use(AbstractPlayer player, AbstractMonster target) {
         AbstractDungeon.actionManager.addToBottom(new ShortenLifeAction(target, 4.0F, this.upgraded));
+        this.cost = this.upgraded ? UPG_COST : COST;
     }
 
-    public void atTurnStart() {
-        this.updateCost(-1);
+    @Override
+    public void triggerOnCardPlayed(com.megacrit.cardcrawl.cards.AbstractCard cardPlayed) {
+        if (cardPlayed.hasTag(KomachiEnum.TAG_CONSUME)) this.updateCost(-1);
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeBaseCost(5);
+            upgradeBaseCost(UPG_COST);
             upgradeDescription(UPGRADE_DESCRIPTION);
         }
     }

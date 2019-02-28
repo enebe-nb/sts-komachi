@@ -27,7 +27,7 @@ public class ThrowAwayCard extends AbstractCard {
     public ThrowAwayCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = 6;
+        this.magicNumber = this.baseMagicNumber = 5;
         this.baseDamage = 2 * this.magicNumber;
     }
 

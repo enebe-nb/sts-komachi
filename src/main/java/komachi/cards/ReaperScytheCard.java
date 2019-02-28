@@ -1,5 +1,7 @@
 package komachi.cards;
 
+import java.util.Arrays;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -11,6 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import komachi.KomachiMod;
 import komachi.actions.ApplyRandomDebuffAction;
+import komachi.actions.ChainAction;
 import komachi.actions.ConsumeOrbAction;
 import komachi.patches.KomachiEnum;
 
@@ -28,25 +31,26 @@ public class ReaperScytheCard extends AbstractCard {
     public ReaperScytheCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/reaperscythe.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseDamage = 8;
-        this.baseAltDamage = 10;
+        this.baseDamage = 7;
+        this.baseAltDamage = 9;
+
+        this.tags.add(KomachiEnum.TAG_CONSUME);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        if (!AbstractDungeon.player.hasOrb()) {
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-        } else {
-            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
-            AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.altDamage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL));
-            AbstractDungeon.actionManager.addToBottom(new ApplyRandomDebuffAction(target, player, 1));
-        }
+        AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(
+            new ChainAction(Arrays.asList(
+                new DamageAction(target, new DamageInfo(player, this.altDamage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL),
+                new ApplyRandomDebuffAction(target, player, 1)
+            )), new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_VERTICAL)
+        ));
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
             upgradeDamage(3);
-            upgradeAltDamage(5);
+            upgradeAltDamage(4);
         }
     }
 }

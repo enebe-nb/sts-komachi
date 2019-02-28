@@ -3,11 +3,15 @@
 
     <groupId>komachi</groupId>
     <artifactId>onozukakomachi</artifactId>
-    <version>0.1.7</version>
+    <version>0.1.8</version>
     <packaging>jar</packaging>
 
     <name>Onozuka Komachi Mod</name>
     <description>A new character from Touhou Series, Onozuka Komachi</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -72,7 +76,7 @@
                         <phase>package</phase>
                         <configuration>
                             <target>
-                                <copy file="target\KomachiMod.jar" tofile="${steam-path}/steamapps/common/SlayTheSpire/mods/KomachiMod.jar"/>
+                                <copy file="target/KomachiMod.jar" tofile="${steam-path}/steamapps/common/SlayTheSpire/mods/KomachiMod.jar"/>
                             </target>
                         </configuration>
                         <goals>

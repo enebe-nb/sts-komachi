@@ -18,6 +18,10 @@
         "NAME": "Bound",
         "DESCRIPTION": "Bind a Spirit."
     },
+    "Komachi:ChangeRoute": {
+        "NAME": "Change the Route",
+        "DESCRIPTION": "Exhaust a card. NL Add a random card into your hand."
+    },
     "Komachi:ChildSpirit": {
         "NAME": "Bound Child Spirit",
         "DESCRIPTION": "Bind a Spirit. NL Heal !M! for each bounded Spirit. NL Exhaust."
@@ -65,15 +69,15 @@
     },
     "Komachi:EtherealCut": {
         "NAME": "Ethereal Cut",
-        "DESCRIPTION": "Enemy loses !M! HP. NL Apply 2 Crackling_Soul."
+        "DESCRIPTION": "Enemy loses !M! HP. NL Apply !ALTMN! Crackling_Soul."
     },
     "Komachi:EtherealSwipe": {
         "NAME": "Ethereal Swipe",
-        "DESCRIPTION": "ALL enemies loses !M! HP. NL Apply 2 Crackling_Soul to ALL enemies."
+        "DESCRIPTION": "ALL enemies loses !M! HP. NL Apply !ALTMN! Crackling_Soul to ALL enemies."
     },
     "Komachi:Exorcism": {
         "NAME": "Exorcism",
-        "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Consume: Remove a random debuff from you."
+        "DESCRIPTION": "Deal !D! damage. NL Consume: Remove a random debuff from you."
     },
     "Komachi:Faith": {
         "NAME": "Faith",
@@ -114,20 +118,24 @@
     },
     "Komachi:GhostlyBarrier": {
         "NAME": "Ghostly Barrier",
-        "DESCRIPTION": "Gain !B! block. NL Consume: Play again. NL Ethereal."
+        "DESCRIPTION": "Gain !B! block. NL Consume: Play a copy once. NL Ethereal."
     },
     "Komachi:GhostlyChain": {
         "NAME": "Ghostly Chains",
-        "DESCRIPTION": "ALL enemies loses !M! Strength. NL Consume: Play again. NL Ethereal.",
-        "UPGRADE_DESCRIPTION": "ALL enemies loses !M! Strength. NL Consume: Play again. NL Ethereal, Innate."
+        "DESCRIPTION": "Consume ALL your spirits, Enemies lose !M! Strength for each spirit. NL Ethereal.",
+        "UPGRADE_DESCRIPTION": "Consume ALL your spirits, Enemies lose !M! Strength for each spirit. NL Ethereal, Innate."
     },
     "Komachi:GhostlySlice": {
         "NAME": "Ghostly Slice",
-        "DESCRIPTION": "Deal !D! damage to a random enemy. NL Consume: Play again. NL Ethereal."
+        "DESCRIPTION": "Deal !D! damage. NL Consume: Play a copy once. NL Ethereal."
     },
     "Komachi:GreedySpirit": {
         "NAME": "Bound Greedy Spirits",
         "DESCRIPTION": "Pay !M! gold. NL At end of your turn bind a Spirit."
+    },
+    "Komachi:HellVision": {
+        "NAME": "Hell Vision",
+        "DESCRIPTION": "Whenever you apply Karma, increase the amount by !M!."
     },
     "Komachi:HiganRetour": {
         "NAME": "Higan Retour",
@@ -142,6 +150,11 @@
     "Komachi:HungrySpirit": {
         "NAME": "Bound Hungry Spirit",
         "DESCRIPTION": "Bind a Spirit. NL Deal !D! damage for each bounded Spirit."
+    },
+    "Komachi:InnerSoul": {
+        "NAME": "Inner Soul",
+        "DESCRIPTION": "When you play a card with consume, it don't remove spirits, Exhaust it.",
+        "UPGRADE_DESCRIPTION": "When you play a card with consume, it don't remove spirits, Exhaust it. NL Innate"
     },
     "Komachi:LifeSwap": {
         "NAME": "Life Swap",
@@ -158,11 +171,11 @@
     },
     "Komachi:Memento": {
         "NAME": "Memento",
-        "DESCRIPTION": "Put a card from discard pile into your hand. NL Consume: Gain [E] and !B! block."
+        "DESCRIPTION": "Gain !B! block and put a card from discard pile into your hand. NL Consume: Gain [E]."
     },
     "Komachi:Modesty": {
         "NAME": "Modesty",
-        "DESCRIPTION": "Gain !M! Weak. NL Gain !M! orb slots."
+        "DESCRIPTION": "Gain !M! Weak. NL Gain !ALTMN! orb slots."
     },
     "Komachi:Offerings": {
         "NAME": "Offerings",
@@ -171,7 +184,11 @@
     },
     "Komachi:PowerSharing": {
         "NAME": "Power Sharing",
-        "DESCRIPTION": "Gain 1 Strength. NL Consume: Gain !M! Strength instead."
+        "DESCRIPTION": "Gain !M! Strength. NL Consume: Gain !ALTMN! Strength instead."
+    },
+    "Komachi:PremonitiveStrike": {
+        "NAME": "Premonitive Strike",
+        "DESCRIPTION": "Deal !D! damage. NL Consume: Play a copy of the top card of your draw pile."
     },
     "Komachi:ReaperScythe": {
         "NAME": "Reaper's Scythe",
@@ -191,12 +208,12 @@
     },
     "Komachi:Shortcut": {
         "NAME": "Shortcut",
-        "DESCRIPTION": "Draw a card. NL Consume: Draw !M! cards instead."
+        "DESCRIPTION": "Draw !M! cards. NL Consume: Draw !ALTMN! cards instead."
     },
     "Komachi:ShortenLife": {
         "NAME": "Shorten life",
-        "DESCRIPTION": "Reduce enemy MaxHP by a fourth. NL Cost 1 less each turn.",
-        "UPGRADE_DESCRIPTION": "Reduce enemy MaxHP and HP by a fourth. NL Cost 1 less each turn."
+        "DESCRIPTION": "When you play a card with Consume, Haggle 1. NL Reduce enemy MaxHP by a fourth then reset the cost.",
+        "UPGRADE_DESCRIPTION": "When you play a card with Consume, Haggle 1. NL Reduce enemy MaxHP and HP by a fourth then reset the cost."
     },
     "Komachi:SinnerSpirit": {
         "NAME": "Bound Sinner Spirit",
@@ -210,13 +227,17 @@
         "NAME": "Spirit Blade",
         "DESCRIPTION": "When you consume a spirit, deal !M! damage to a random enemy."
     },
+    "Komachi:SpiritualEnergy": {
+        "NAME": "Spirit Energy",
+        "DESCRIPTION": "Consume: Gain [E] [E]. NL Can't be played without consume."
+    },
     "Komachi:Strike": {
         "NAME": "Strike",
         "DESCRIPTION": "Deal !D! damage."
     },
     "Komachi:TasteDeath": {
         "NAME": "Taste of Death",
-        "DESCRIPTION": "Apply 4 Crackling_Soul to ALL enemies. NL Consume: Also apply !M! random debuff. NL Exhaust"
+        "DESCRIPTION": "Apply !M! Crackling_Soul to ALL enemies. NL Consume: Also apply !ALTMN! random debuffs. NL Exhaust"
     },
     "Komachi:ThrowAway": {
         "NAME": "Throw Away",
@@ -240,7 +261,8 @@
     },
     "Komachi:WanderingSpirits": {
         "NAME": "Wandering Spirits",
-        "DESCRIPTION": "When you consume a spirit, draw a card."
+        "DESCRIPTION": "When you consume a spirit, draw a card. NL Ethereal",
+        "UPGRADE_DESCRIPTION": "When you consume a spirit, draw a card."
     },
     "Komachi:WideSwing": {
         "NAME": "Wide Swing",

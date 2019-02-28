@@ -23,6 +23,13 @@
         "DESCRIPTION": "At next turn the enemy loses HP for each debuff."
     },
     {
+        "PROPER": "Haggle",
+        "NAMES": [
+            "haggle"
+        ],
+        "DESCRIPTION": "Reduce the cost of the card by the specified amount."
+    },
+    {
         "PROPER": "Karma",
         "NAMES": [
             "karma"

@@ -27,7 +27,9 @@ public class MementoCard extends AbstractCard {
     public MementoCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.baseBlock = 3;
+        this.baseBlock = 2;
+
+        this.tags.add(KomachiEnum.TAG_CONSUME);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
@@ -35,16 +37,13 @@ public class MementoCard extends AbstractCard {
             AbstractDungeon.actionManager.addToBottom(new DiscardPileToHandAction(1));
         }
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(player, player, this.block));
-        if (AbstractDungeon.player.hasOrb()) {
-            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
-            AbstractDungeon.actionManager.addToBottom(new GainEnergyAction(1));
-        }
+        AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(new GainEnergyAction(1)));
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeBlock(5);
+            upgradeBlock(4);
         }
     }
 }

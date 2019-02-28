@@ -25,22 +25,24 @@ public class ShortcutCard extends AbstractCard {
     public ShortcutCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/beta.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = 3;
+        this.magicNumber = this.baseMagicNumber = 1;
+        this.altMagicNumber = this.baseAltMagicNumber = 3;
+
+        this.tags.add(KomachiEnum.TAG_CONSUME);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
-        if (AbstractDungeon.player.hasOrb()) {
-            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, this.magicNumber));
-        } else {
-            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(player, 1));
-        }
+        AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(
+            new DrawCardAction(player, this.altMagicNumber),
+            new DrawCardAction(player, this.magicNumber)
+        ));
     }
 
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(2);
+            upgradeMagicNumber(1);
+            upgradeAltMagicNumber(2);
         }
     }
 }

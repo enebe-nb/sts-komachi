@@ -25,7 +25,7 @@ public class RiverMistCard extends AbstractCard {
     public RiverMistCard() {
         super(ID, NAME, KomachiMod.getResourcePath("cards/rivermist.png"), COST, DESCRIPTION, TYPE, KomachiEnum.KOMACHI_COLOR, RARITY, TARGET);
         
-        this.baseBlock = 12;
+        this.baseBlock = 10;
         this.magicNumber = this.baseMagicNumber = 1;
     }
 

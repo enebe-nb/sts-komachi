@@ -1,5 +1,7 @@
 package komachi.cards;
 
+import java.util.ArrayList;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
@@ -13,6 +15,7 @@ import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import komachi.KomachiMod;
+import komachi.actions.ChainAction;
 import komachi.actions.ConsumeOrbAction;
 import komachi.patches.KomachiEnum;
 
@@ -33,6 +36,8 @@ public class FullSwingCard extends AbstractCard {
         this.baseDamage = 4;
         this.baseAltDamage = 5;
         this.isMultiDamage = true;
+
+        this.tags.add(KomachiEnum.TAG_CONSUME);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {
@@ -44,15 +49,18 @@ public class FullSwingCard extends AbstractCard {
             effect += ChemicalX.BOOST;
             player.getRelic(ChemicalX.ID).flash();
         }
-        if (!AbstractDungeon.player.hasOrb()) {
+        if (effect > 0) {
+            ArrayList<AbstractGameAction> chainConsume = new ArrayList<>();
+            ArrayList<AbstractGameAction> chainNormal = new ArrayList<>();
             for (int i = 0; i < effect; ++i) {
-                AbstractDungeon.actionManager.addToBottom(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+                chainConsume.add(new DamageAllEnemiesAction(player, this.multiAltDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+                chainNormal.add(new DamageAction(target, new DamageInfo(player, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
             }
-        } else {
-            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(1));
-            for (int i = 0; i < effect; ++i) {
-                AbstractDungeon.actionManager.addToBottom(new DamageAllEnemiesAction(player, this.multiAltDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
-            }
+
+            AbstractDungeon.actionManager.addToBottom(new ConsumeOrbAction(
+                new ChainAction(chainConsume),
+                new ChainAction(chainNormal)
+            ));
         }
         if (!this.freeToPlayOnce && effect > 0) player.energy.use(EnergyPanel.totalCount);
     }
