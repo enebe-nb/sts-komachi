@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import komachi.KomachiMod;
 import komachi.actions.ConsumeOrbAction;
 import komachi.patches.KomachiEnum;
+import komachi.powers.InnerSoulPower;
 
 public class SpiritualEnergyCard extends AbstractCard {
     public static final String ID = "Komachi:SpiritualEnergy";
@@ -29,7 +30,7 @@ public class SpiritualEnergyCard extends AbstractCard {
     }
 
     public boolean cardPlayable(AbstractMonster target) {
-        return AbstractDungeon.player.hasOrb();
+        return AbstractDungeon.player.hasOrb() || AbstractDungeon.player.hasPower(InnerSoulPower.POWER_ID);
     }
 
     public void use(AbstractPlayer player, AbstractMonster target) {

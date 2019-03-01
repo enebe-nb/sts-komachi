@@ -13,8 +13,8 @@ public class ChainAction extends AbstractGameAction {
     }
 
     public void update() {
-        for (AbstractGameAction action : this.chain) {
-            AbstractDungeon.actionManager.addToBottom(action);
+        for (int i = this.chain.size(); i-- > 0; ) {
+            AbstractDungeon.actionManager.addToTop(this.chain.get(i));
         }
         this.isDone = true;
     }

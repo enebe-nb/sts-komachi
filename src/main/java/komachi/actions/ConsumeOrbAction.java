@@ -43,9 +43,10 @@ public class ConsumeOrbAction extends AbstractGameAction {
         if (this.duration == this.startDuration) {
             boolean hasInnerSoul = AbstractDungeon.player.hasPower(InnerSoulPower.POWER_ID);
             if (AbstractDungeon.player.hasOrb() || hasInnerSoul) {
+                if (this.onSuccess != null) AbstractDungeon.actionManager.addToTop(this.onSuccess);
                 KomachiMod.consumedInThisCombat++;
                 if (!hasInnerSoul) {
-                    AbstractDungeon.actionManager.addToBottom(new AnimateOrbAction(1));
+                    AbstractDungeon.actionManager.addToTop(new AnimateOrbAction(1));
                     AbstractDungeon.player.triggerEvokeAnimation(0);
                     AbstractDungeon.player.evokeOrb();
                 }
@@ -53,8 +54,7 @@ public class ConsumeOrbAction extends AbstractGameAction {
                 for (AbstractPower power : AbstractDungeon.player.powers) {
                     if (triggeredPowers.contains(power.ID)) power.onSpecificTrigger();
                 }
-                if (this.onSuccess != null) AbstractDungeon.actionManager.addToBottom(this.onSuccess);
-            } else if (this.onFailure != null) AbstractDungeon.actionManager.addToBottom(this.onFailure);
+            } else if (this.onFailure != null) AbstractDungeon.actionManager.addToTop(this.onFailure);
         }
 
         tickDuration();

@@ -122,8 +122,7 @@
     },
     "Komachi:GhostlyChain": {
         "NAME": "Ghostly Chains",
-        "DESCRIPTION": "Consume ALL your spirits, Enemies lose !M! Strength for each spirit. NL Ethereal.",
-        "UPGRADE_DESCRIPTION": "Consume ALL your spirits, Enemies lose !M! Strength for each spirit. NL Ethereal, Innate."
+        "DESCRIPTION": "Enemies lose X + !M! Strength this turn. NL Consume: Play a copy once. NL Ethereal."
     },
     "Komachi:GhostlySlice": {
         "NAME": "Ghostly Slice",
